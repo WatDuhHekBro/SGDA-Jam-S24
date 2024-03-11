@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://7qwoc7r1ih8"]
+
+[ext_resource type="Script" path="res://objects/CharacterBody2D.gd" id="1_5f28u"]
+[ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28up"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5f28u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a28up")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xvwpe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(3, 3)

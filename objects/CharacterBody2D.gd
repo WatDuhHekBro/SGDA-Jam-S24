@@ -13,13 +13,9 @@ func _physics_process(delta):
 	if direction_x:
 		velocity.x = direction_x * SPEED * cos(deg_to_rad(30))
 		velocity.y = direction_x * SPEED * sin(deg_to_rad(30))
-		print('x\' = ', velocity.x)
-		print('y\' = ', velocity.y)
 	elif direction_y:
 		velocity.x = direction_y * SPEED * cos(deg_to_rad(-30))
 		velocity.y = direction_y * SPEED * sin(deg_to_rad(-30))
-		print('x = ', velocity.x)
-		print('y = ', velocity.y)
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)

@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 125.0
 const SPEED_WALLPHASE = 300.0
+const ANGLE_X = cos(deg_to_rad(27))
+const ANGLE_Y = sin(deg_to_rad(27))
 # Toggle these by collecting items in-game, set to true for debug purposes
 var wallphase_count = 1
 var can_wallrun = true
@@ -26,32 +28,52 @@ func _physics_process(delta):
 		
 		# Messy code, needs refactor
 		if stored_direction == WallphaseDirection.LEFT:
-			velocity.x = -1 * SPEED_WALLPHASE * cos(deg_to_rad(30))
-			velocity.y = -1 * SPEED_WALLPHASE * sin(deg_to_rad(30))
+			velocity.x = -1 * SPEED_WALLPHASE * ANGLE_X
+			velocity.y = -1 * SPEED_WALLPHASE * ANGLE_Y
 		elif stored_direction == WallphaseDirection.RIGHT:
-			velocity.x = SPEED_WALLPHASE * cos(deg_to_rad(30))
-			velocity.y = SPEED_WALLPHASE * sin(deg_to_rad(30))
+			velocity.x = SPEED_WALLPHASE * ANGLE_X
+			velocity.y = SPEED_WALLPHASE * ANGLE_Y
 		elif stored_direction == WallphaseDirection.DOWN:
-			velocity.x = -1 * SPEED_WALLPHASE * cos(deg_to_rad(-30))
-			velocity.y = -1 * SPEED_WALLPHASE * sin(deg_to_rad(-30))
+			velocity.x = -1 * SPEED_WALLPHASE * ANGLE_X
+			velocity.y = -1 * SPEED_WALLPHASE * -ANGLE_Y
 		elif stored_direction == WallphaseDirection.UP:
-			velocity.x = SPEED_WALLPHASE * cos(deg_to_rad(-30))
-			velocity.y = SPEED_WALLPHASE * sin(deg_to_rad(-30))
+			velocity.x = SPEED_WALLPHASE * ANGLE_X
+			velocity.y = SPEED_WALLPHASE * -ANGLE_Y
 	else:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_down", "ui_up")
 		
-		if direction_x:
-			velocity.x = direction_x * SPEED * cos(deg_to_rad(30))
-			velocity.y = direction_x * SPEED * sin(deg_to_rad(30))
+		# Octodirectional movement
+		if direction_x && direction_y:
+			# Right + Up
+			if direction_x == 1 && direction_y == 1:
+				velocity.x = SPEED
+				velocity.y = move_toward(velocity.y, 0, SPEED)
+			# Left + Down
+			elif direction_x == -1 && direction_y == -1:
+				velocity.x = -SPEED
+				velocity.y = move_toward(velocity.y, 0, SPEED)
+			# Right + Down
+			elif direction_x == 1 && direction_y == -1:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.y = SPEED
+			# Left + Up
+			elif direction_x == -1 && direction_y == 1:
+				velocity.x = move_toward(velocity.x, 0, SPEED)
+				velocity.y = -SPEED
+		# Horizontal only
+		elif direction_x:
+			velocity.x = direction_x * SPEED * ANGLE_X
+			velocity.y = direction_x * SPEED * ANGLE_Y
 			
 			if direction_x < 0:
 				stored_direction = WallphaseDirection.LEFT
 			elif direction_x > 0:
 				stored_direction = WallphaseDirection.RIGHT
+		# Vertical only
 		elif direction_y:
-			velocity.x = direction_y * SPEED * cos(deg_to_rad(-30))
-			velocity.y = direction_y * SPEED * sin(deg_to_rad(-30))
+			velocity.x = direction_y * SPEED * ANGLE_X
+			velocity.y = direction_y * SPEED * -ANGLE_Y
 			
 			if direction_y < 0:
 				stored_direction = WallphaseDirection.DOWN

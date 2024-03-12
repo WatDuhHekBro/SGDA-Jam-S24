@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cdiguwe88syya"]
 
-[ext_resource type="TileSet" uid="uid://cwxl3g4knkhnt" path="res://prefabs/tilesets/phys-off.tres" id="1_t3e6j"]
+[ext_resource type="TileSet" uid="uid://cwxl3g4knkhnt" path="res://resources/tilesets/phys-off.tres" id="1_t3e6j"]
 
 [node name="Ground" type="TileMap"]
 tile_set = ExtResource("1_t3e6j")

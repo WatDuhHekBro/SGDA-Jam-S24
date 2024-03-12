@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://dxxwtbiesk070"]
 
-[ext_resource type="PackedScene" uid="uid://cdiguwe88syya" path="res://prefabs/tilemaps/ground.tscn" id="1_7mrgl"]
+[ext_resource type="PackedScene" uid="uid://cdiguwe88syya" path="res://objects/tilemaps/ground.tscn" id="1_7mrgl"]
 [ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="1_fbjo6"]
-[ext_resource type="PackedScene" uid="uid://t1y8nb7nvum3" path="res://prefabs/tilemaps/walls.tscn" id="2_g122k"]
+[ext_resource type="PackedScene" uid="uid://t1y8nb7nvum3" path="res://objects/tilemaps/walls.tscn" id="2_g122k"]
 
 [node name="Template" type="Node2D"]
 

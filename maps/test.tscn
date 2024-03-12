@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cb2puhkj5hil3"]
 
-[ext_resource type="TileSet" uid="uid://cwxl3g4knkhnt" path="res://prefabs/tilesets/phys-off.tres" id="1_wintk"]
-[ext_resource type="TileSet" uid="uid://dtychmynjsnws" path="res://prefabs/tilesets/phys-on.tres" id="2_3pah3"]
+[ext_resource type="TileSet" uid="uid://cwxl3g4knkhnt" path="res://resources/tilesets/phys-off.tres" id="1_wintk"]
+[ext_resource type="TileSet" uid="uid://dtychmynjsnws" path="res://resources/tilesets/phys-on.tres" id="2_3pah3"]
 [ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="2_pvbfv"]
 
 [node name="Test" type="Node2D"]

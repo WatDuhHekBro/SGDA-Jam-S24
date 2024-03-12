@@ -22,7 +22,7 @@ texture = ExtResource("2_xvwpe")
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TimerTimejump" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 3.0
 one_shot = true
 
 [node name="TimerWallphaseTimeout" type="Timer" parent="."]

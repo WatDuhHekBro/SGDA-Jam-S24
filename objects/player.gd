@@ -6,7 +6,7 @@ const SPEED_WALLPHASE = 300.0
 const ANGLE_X = cos(deg_to_rad(27))
 const ANGLE_Y = sin(deg_to_rad(27))
 # Toggle these by collecting items in-game, set to true for debug purposes
-var wallphase_count = 1
+var wallphase_count = 5
 var can_wallrun = true
 var can_timejump = true
 # moar vars
@@ -22,7 +22,7 @@ var stored_position_x = 0
 var stored_position_y = 0
 
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_currently_wallphasing || is_currently_wallrunning:
 		collision.set_deferred("disabled", true)
 		
@@ -122,6 +122,11 @@ func _on_auxiliary_collision_area_body_entered(body):
 		if is_currently_wallrunning:
 			print("wallrun start")
 			is_currently_wallrunning = false
+	elif body.name == "Bounds":
+		collision.set_deferred("disabled", false)
+		is_currently_wallphasing = false
+		is_currently_wallrunning = false
+		print("wallphase safety cancel (bounds)")
 	
 	print('[Wallphase Enter] ', body.name)
 

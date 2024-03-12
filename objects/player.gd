@@ -6,9 +6,9 @@ const SPEED_WALLPHASE = 300.0
 const ANGLE_X = cos(deg_to_rad(27))
 const ANGLE_Y = sin(deg_to_rad(27))
 # Toggle these by collecting items in-game, set to true for debug purposes
-var wallphase_count = 5
-var can_wallrun = true
-var can_timejump = true
+var wallphase_count = 0
+var can_wallrun = false
+var can_timejump = false
 # moar vars
 enum WallphaseDirection {UP, DOWN, LEFT, RIGHT}
 var stored_direction = WallphaseDirection.RIGHT
@@ -148,3 +148,15 @@ func _on_timer_wallphase_timeout_timeout():
 	is_currently_wallphasing = false
 	is_currently_wallrunning = false
 	print("wallphase safety cancel")
+
+
+func _on_auxiliary_collision_area_area_entered(area):
+	if area.name.begins_with("CrystalWallphase"):
+		wallphase_count += area.refills
+	if area.name.begins_with("CrystalWallrun"):
+		can_wallrun = true
+	if area.name.begins_with("CrystalTimejump"):
+		can_timejump = true
+	
+	# Delete item
+	area.queue_free()

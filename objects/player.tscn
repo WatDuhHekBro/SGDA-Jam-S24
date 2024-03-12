@@ -29,6 +29,7 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
+[connection signal="area_entered" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_area_entered"]
 [connection signal="body_entered" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_entered"]
 [connection signal="body_exited" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_exited"]
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]

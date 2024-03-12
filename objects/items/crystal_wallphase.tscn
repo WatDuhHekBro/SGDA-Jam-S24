@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://dus1nai686kk8"]
+
+[ext_resource type="Script" path="res://objects/items/crystal_wallphase.gd" id="1_2726d"]
+[ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="1_g0hdv"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_70b5u"]
+
+[node name="CrystalWallphase" type="Area2D"]
+script = ExtResource("1_2726d")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_g0hdv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_70b5u")

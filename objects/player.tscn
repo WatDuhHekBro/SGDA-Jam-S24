@@ -1,0 +1,35 @@
+[gd_scene load_steps=4 format=3 uid="uid://7qwoc7r1ih8"]
+
+[ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
+[ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28up"]
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_5f28u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_a28up")
+
+[node name="AuxiliaryCollisionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AuxiliaryCollisionArea"]
+shape = SubResource("CapsuleShape2D_a28up")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_xvwpe")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="TimerTimejump" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+
+[node name="TimerWallphaseTimeout" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
+[connection signal="body_entered" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_entered"]
+[connection signal="body_exited" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_exited"]
+[connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
+[connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

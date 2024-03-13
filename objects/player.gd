@@ -1,5 +1,6 @@
 extends CharacterBody2D
 
+const DirUtils = preload("res://objects/utils/directions.gd")
 
 const SPEED = 125.0
 const SPEED_WALLPHASE = 300.0
@@ -10,8 +11,7 @@ var wallphase_count = 0
 var can_wallrun = false
 var can_timejump = false
 # moar vars
-enum WallphaseDirection {UP, DOWN, LEFT, RIGHT}
-var stored_direction = WallphaseDirection.RIGHT
+var stored_direction = DirUtils.Directions.ZERO
 var is_currently_wallphasing = false
 var is_currently_wallrunning = false
 # References
@@ -27,62 +27,20 @@ func _physics_process(_delta):
 		collision.set_deferred("disabled", true)
 		
 		# Messy code, needs refactor
-		if stored_direction == WallphaseDirection.LEFT:
-			velocity.x = -1 * SPEED_WALLPHASE * ANGLE_X
-			velocity.y = -1 * SPEED_WALLPHASE * ANGLE_Y
-		elif stored_direction == WallphaseDirection.RIGHT:
-			velocity.x = SPEED_WALLPHASE * ANGLE_X
-			velocity.y = SPEED_WALLPHASE * ANGLE_Y
-		elif stored_direction == WallphaseDirection.DOWN:
-			velocity.x = -1 * SPEED_WALLPHASE * ANGLE_X
-			velocity.y = -1 * SPEED_WALLPHASE * -ANGLE_Y
-		elif stored_direction == WallphaseDirection.UP:
-			velocity.x = SPEED_WALLPHASE * ANGLE_X
-			velocity.y = SPEED_WALLPHASE * -ANGLE_Y
+		for dir in DirUtils.DIRECTIONS :
+			if stored_direction == dir:
+				velocity = DirUtils.dir_to_vec(dir) * SPEED_WALLPHASE
+				break;
 	else:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_down", "ui_up")
+		var rectangular_dir_vec = Vector2(direction_x, direction_y)
+		var iso_dir = DirUtils.rectangular_vec_to_dir(rectangular_dir_vec)
+		var iso_vec = DirUtils.dir_to_vec(iso_dir)
+		stored_direction = iso_dir
 		
-		# Octodirectional movement
-		if direction_x && direction_y:
-			# Right + Up
-			if direction_x == 1 && direction_y == 1:
-				velocity.x = SPEED
-				velocity.y = move_toward(velocity.y, 0, SPEED)
-			# Left + Down
-			elif direction_x == -1 && direction_y == -1:
-				velocity.x = -SPEED
-				velocity.y = move_toward(velocity.y, 0, SPEED)
-			# Right + Down
-			elif direction_x == 1 && direction_y == -1:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.y = SPEED
-			# Left + Up
-			elif direction_x == -1 && direction_y == 1:
-				velocity.x = move_toward(velocity.x, 0, SPEED)
-				velocity.y = -SPEED
-		# Horizontal only
-		elif direction_x:
-			velocity.x = direction_x * SPEED * ANGLE_X
-			velocity.y = direction_x * SPEED * ANGLE_Y
-			
-			if direction_x < 0:
-				stored_direction = WallphaseDirection.LEFT
-			elif direction_x > 0:
-				stored_direction = WallphaseDirection.RIGHT
-		# Vertical only
-		elif direction_y:
-			velocity.x = direction_y * SPEED * ANGLE_X
-			velocity.y = direction_y * SPEED * -ANGLE_Y
-			
-			if direction_y < 0:
-				stored_direction = WallphaseDirection.DOWN
-			elif direction_y > 0:
-				stored_direction = WallphaseDirection.UP
-		else:
-			velocity.x = move_toward(velocity.x, 0, SPEED)
-			velocity.y = move_toward(velocity.y, 0, SPEED)
-		
+		velocity = iso_vec * SPEED
+
 		# Abilities/Actions
 		if wallphase_count > 0 && Input.is_action_just_released("action-wallphase"):
 			is_currently_wallphasing = true

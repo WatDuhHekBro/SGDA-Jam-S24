@@ -12,11 +12,23 @@ y_sort_enabled = true
 script = ExtResource("1_5f28u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 8)
+rotation = 1.05767
+scale = Vector2(0.84309, -0.354867)
 shape = SubResource("CapsuleShape2D_a28up")
 
-[node name="AuxiliaryCollisionArea" type="Area2D" parent="."]
+[node name="AuxiliaryCollisionArea" type="Area2D" parent="CollisionShape2D"]
+position = Vector2(4.76837e-07, -4.76837e-07)
+rotation = 1.052
+scale = Vector2(1.64952, -1.85516)
+skew = 0.0112922
+collision_layer = 2
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AuxiliaryCollisionArea"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/AuxiliaryCollisionArea"]
+position = Vector2(0, -4.76837e-07)
+rotation = 1.00969
+scale = Vector2(0.466, -0.5)
+skew = 0.0933187
 shape = SubResource("CapsuleShape2D_a28up")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -33,8 +45,8 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
-[connection signal="area_entered" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_area_entered"]
-[connection signal="body_entered" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_entered"]
-[connection signal="body_exited" from="AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_exited"]
+[connection signal="area_entered" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_area_entered"]
+[connection signal="body_entered" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_entered"]
+[connection signal="body_exited" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_exited"]
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

@@ -4,15 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28up"]
-radius = 5.0
-height = 21.0
+radius = 6.28789
+height = 53.9276
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
+collision_layer = 2
 script = ExtResource("1_5f28u")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(1, 1.53125)
+texture = ExtResource("2_xvwpe")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1, 8)
+position = Vector2(1.78814e-07, 15)
 rotation = 1.05767
 scale = Vector2(0.84309, -0.354867)
 shape = SubResource("CapsuleShape2D_a28up")
@@ -25,15 +30,11 @@ skew = 0.0112922
 collision_layer = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/AuxiliaryCollisionArea"]
-position = Vector2(0, -4.76837e-07)
+position = Vector2(5.89589e-08, -1.3845e-07)
 rotation = 1.00969
 scale = Vector2(0.466, -0.5)
 skew = 0.0933187
 shape = SubResource("CapsuleShape2D_a28up")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(1, 1.53125)
-texture = ExtResource("2_xvwpe")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

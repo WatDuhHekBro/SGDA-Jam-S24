@@ -4,8 +4,11 @@
 [ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28up"]
+radius = 5.0
+height = 21.0
 
 [node name="Player" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_5f28u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -17,6 +20,8 @@ shape = SubResource("CapsuleShape2D_a28up")
 shape = SubResource("CapsuleShape2D_a28up")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8.5)
+scale = Vector2(1, 1.53125)
 texture = ExtResource("2_xvwpe")
 
 [node name="Camera2D" type="Camera2D" parent="."]

@@ -160,3 +160,8 @@ func _on_auxiliary_collision_area_area_entered(area):
 	
 	# Delete item
 	area.queue_free()
+
+
+func kill():
+	print("KILL player call")
+	#queue_free()

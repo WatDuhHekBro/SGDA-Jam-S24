@@ -1,0 +1,40 @@
+[gd_scene load_steps=6 format=3 uid="uid://c3dts2eostqj2"]
+
+[ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
+[ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="2_jyc14"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xiqk4"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g4fck"]
+radius = 51.4198
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ier50"]
+
+[node name="Enemy" type="CharacterBody2D"]
+script = ExtResource("1_hxnli")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("2_jyc14")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xiqk4")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_postprocessing = 1
+debug_enabled = true
+
+[node name="DetectionArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_g4fck")
+
+[node name="KillArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
+scale = Vector2(1.2, 1.2)
+shape = SubResource("RectangleShape2D_ier50")
+
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]

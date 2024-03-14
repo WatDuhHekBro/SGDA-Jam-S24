@@ -20,7 +20,6 @@ shape = SubResource("CapsuleShape2D_a28up")
 shape = SubResource("CapsuleShape2D_a28up")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -8.5)
 scale = Vector2(1, 1.53125)
 texture = ExtResource("2_xvwpe")
 

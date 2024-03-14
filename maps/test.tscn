@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dus1nai686kk8" path="res://objects/items/crystal_wallphase.tscn" id="6_ds2tn"]
 [ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="7_h6sh6"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ok3ap"]
-vertices = PackedVector2Array(-170, 47, -166, 48, -186, 58, -186, 70, -182, 71, -211, 86, -357, -65, -204, -66, -199, -64, -218, -57, -357, -53, -217, -25, -197, -17, -204, -14, -238, -119, -180, -89, -204, -80, -364, -70, -218, -44, -211, -40, -217, -38, -171, 30, -166, 32, -170, 34, -405, -29, -409, -31, -260, 107, -441, 16, -422, 8, -204, -2, -166, 15, -171, 18, -422, -4, -425, -6, -405, -17)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2), PackedInt32Array(3, 4, 5), PackedInt32Array(6, 7, 8, 9, 10), PackedInt32Array(11, 12, 13), PackedInt32Array(14, 15, 16, 6, 17), PackedInt32Array(18, 19, 20, 10), PackedInt32Array(21, 22, 23), PackedInt32Array(24, 25, 10), PackedInt32Array(26, 27, 28), PackedInt32Array(29, 30, 31), PackedInt32Array(32, 33, 34), PackedInt32Array(6, 16, 7), PackedInt32Array(10, 9, 18), PackedInt32Array(32, 34, 10, 20, 11, 26, 28), PackedInt32Array(34, 24, 10), PackedInt32Array(29, 31, 21, 5), PackedInt32Array(5, 26, 11, 13, 29), PackedInt32Array(5, 21, 23, 2), PackedInt32Array(2, 3, 5), PackedInt32Array(2, 23, 0)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(-432, 1, -465, 16, -261, 119, -207, 95, -160, 72, -176, 64, -141, 47, -160, 40, -144, 32, -161, 24, -145, 15, -194, -8, -174, -18, -207, -32, -190, -41, -208, -50, -173, -65, -194, -73, -157, -89, -237, -131, -387, -72, -367, -60, -433, -32, -415, -23, -445, -7)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_ycq6a"]
+vertices = PackedVector2Array(279, 131, 355, 110, 342, 177, 269, 214, 17, 245, 194, 7, 177, -62, 380, -2, 360, 82, 287, 61, 230, 90, 185, 81, -155, 26, -172, 95, -236, 119, -447, 13, -377, -64, -184, -2, 148, -126, 106, -107, 57, 90, 230, 102, -56, 131, -3, -76, -17, -103, 56, 89, -213, -60, -198, -149, -89, -139)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(5, 9, 10, 11), PackedInt32Array(12, 13, 14, 15, 16, 17), PackedInt32Array(18, 7, 6, 19), PackedInt32Array(20, 11, 10, 21, 4, 22), PackedInt32Array(19, 23, 24, 18), PackedInt32Array(21, 0, 4), PackedInt32Array(22, 25, 20), PackedInt32Array(22, 4, 14, 13), PackedInt32Array(26, 17, 16), PackedInt32Array(26, 16, 27, 28), PackedInt32Array(28, 27, 18), PackedInt32Array(24, 28, 18)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(104, -96, 168, -56, 184, 8, 176, 72, 56, 80, -56, 120, -160, 88, -240, 128, 16, 256, 144, 248, 112, 160, 80, 152, 104, 120, 144, 144, 112, 160, 144, 248, 352, 184, 368, 96, 280, 120, 240, 96, 288, 72, 368, 96, 392, -8, 152, -136, -200, -160, -384, -72, -464, 16, -240, 128, -160, 88, -144, 24, -176, -8, -200, -56, -88, -128, -24, -96, -8, -64)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Test" type="Node2D"]
@@ -83,7 +83,7 @@ unique_name_in_owner = true
 z_index = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_ok3ap")
+navigation_polygon = SubResource("NavigationPolygon_ycq6a")
 
 [node name="CrystalWallrun" parent="." instance=ExtResource("4_03w3i")]
 position = Vector2(38, 11)
@@ -95,5 +95,5 @@ position = Vector2(76, 134)
 position = Vector2(175, 117)
 
 [node name="Enemy" parent="." instance=ExtResource("7_h6sh6")]
-position = Vector2(-301, -60)
+position = Vector2(25, -114)
 collision_layer = 1

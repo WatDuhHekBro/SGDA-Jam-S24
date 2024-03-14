@@ -1,11 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=5 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
 [ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a28up"]
-radius = 6.28789
-height = 53.9276
+[sub_resource type="CircleShape2D" id="CircleShape2D_s6s3b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_v7im4"]
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -13,14 +13,14 @@ collision_layer = 2
 script = ExtResource("1_5f28u")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(1, -16)
 scale = Vector2(1, 1.53125)
 texture = ExtResource("2_xvwpe")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(1.78814e-07, 15)
+position = Vector2(2.98023e-07, -8)
 rotation = 1.05767
-scale = Vector2(0.84309, -0.354867)
-shape = SubResource("CapsuleShape2D_a28up")
+shape = SubResource("CircleShape2D_s6s3b")
 
 [node name="AuxiliaryCollisionArea" type="Area2D" parent="CollisionShape2D"]
 position = Vector2(4.76837e-07, -4.76837e-07)
@@ -34,7 +34,7 @@ position = Vector2(5.89589e-08, -1.3845e-07)
 rotation = 1.00969
 scale = Vector2(0.466, -0.5)
 skew = 0.0933187
-shape = SubResource("CapsuleShape2D_a28up")
+shape = SubResource("CircleShape2D_v7im4")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 

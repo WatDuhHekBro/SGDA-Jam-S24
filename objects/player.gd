@@ -29,17 +29,17 @@ func _physics_process(_delta):
 		# Messy code, needs refactor
 		for dir in DirUtils.DIRECTIONS :
 			if stored_direction == dir:
-				velocity = DirUtils.dir_to_vec(dir) * SPEED_WALLPHASE
+				velocity = DirUtils.direction_to_vector(dir) * SPEED_WALLPHASE
 				break;
 	else:
 		var direction_x = Input.get_axis("ui_left", "ui_right")
 		var direction_y = Input.get_axis("ui_down", "ui_up")
-		var rectangular_dir_vec = Vector2(direction_x, direction_y)
-		var iso_dir = DirUtils.rectangular_vec_to_dir(rectangular_dir_vec)
-		var iso_vec = DirUtils.dir_to_vec(iso_dir)
-		stored_direction = iso_dir
+		var rectangular_vector = Vector2(direction_x, direction_y)
+		var iso_direction = DirUtils.rectangular_vector_to_direction(rectangular_vector)
+		var iso_vector = DirUtils.direction_to_vector(iso_direction)
+		stored_direction = iso_direction
 		
-		velocity = iso_vec * SPEED
+		velocity = iso_vector * SPEED
 
 		# Abilities/Actions
 		if wallphase_count > 0 && Input.is_action_just_released("action-wallphase"):

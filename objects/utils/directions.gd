@@ -25,16 +25,13 @@ static var DIRECTIONS = [
     Directions.RIGHT_DOWN
 ]
 
-static func dir_to_vec(dir: Directions):
+static func direction_to_vector(dir: Directions):
     if dir == Directions.ZERO:
         return Vector2(0, 0)
     var angle = deg_to_rad(dir);
     return Vector2(cos(angle), sin(angle))
 
-static func rectangular_vec_to_iso_vec(vec: Vector2):
-    return dir_to_vec(rectangular_vec_to_dir(vec))
-
-static func rectangular_vec_to_dir(vec_dir: Vector2):
+static func rectangular_vector_to_direction(vec_dir: Vector2):
     if vec_dir.x == 0 and vec_dir.y == 0:
         return Directions.ZERO
     elif vec_dir.x > 0 and vec_dir.y == 0:

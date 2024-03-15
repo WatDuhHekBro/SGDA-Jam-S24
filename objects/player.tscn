@@ -1,24 +1,46 @@
-[gd_scene load_steps=5 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=7 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
-[ext_resource type="Texture2D" uid="uid://bd17fk4ooebco" path="res://assets/isometric-test/critters/boar/boar_SW_idle_3.png" id="2_xvwpe"]
+[ext_resource type="Texture2D" uid="uid://bfdpe3sd774nq" path="res://assets/isometric-test/critters/ghost/ghost_back.png" id="2_dfqti"]
+[ext_resource type="Texture2D" uid="uid://egwaocrufina" path="res://assets/isometric-test/critters/ghost/ghost_foward.png" id="2_oakft"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hp871"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dfqti")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oakft")
+}],
+"loop": true,
+"name": &"foward",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_s6s3b"]
+radius = 7.2111
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_v7im4"]
+radius = 6.39289
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
 collision_layer = 2
 script = ExtResource("1_5f28u")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -16)
-scale = Vector2(1, 1.53125)
-texture = ExtResource("2_xvwpe")
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(0.04, 0.04)
+sprite_frames = SubResource("SpriteFrames_hp871")
+animation = &"backward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(2.98023e-07, -8)
+position = Vector2(0, 12)
 rotation = 1.05767
 shape = SubResource("CircleShape2D_s6s3b")
 

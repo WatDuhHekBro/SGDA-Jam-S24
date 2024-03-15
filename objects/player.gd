@@ -38,6 +38,8 @@ func _physics_process(_delta):
 		var iso_direction = DirUtils.rectangular_vector_to_direction(rectangular_vector)
 		var iso_vector = DirUtils.direction_to_vector(iso_direction)
 		stored_direction = iso_direction
+
+		check_animation()
 		
 		velocity = iso_vector * SPEED
 
@@ -63,6 +65,26 @@ func _physics_process(_delta):
 
 	move_and_slide()
 
+func check_animation():
+	var dotted = velocity.dot(DirUtils.direction_to_vector(DirUtils.Directions.UP))
+	var backwards;
+	if dotted > 0:
+		$AnimatedSprite2D.play("foward")
+		backwards = false
+	elif dotted < 0:
+		$AnimatedSprite2D.play("backward")
+		backwards = true
+	else:
+		$AnimatedSprite2D.play("foward")
+		dotted = 0
+
+	if velocity.x > 0:
+		$AnimatedSprite2D.flip_h = true
+	elif velocity.x < 0:
+		$AnimatedSprite2D.flip_h = false
+	
+	if backwards:
+		$AnimatedSprite2D.flip_h = not $AnimatedSprite2D.flip_h
 
 func _on_timer_timejump_timeout():
 	position.x = stored_position_x

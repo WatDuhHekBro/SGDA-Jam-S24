@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://dus1nai686kk8" path="res://objects/items/crystal_wallphase.tscn" id="6_ds2tn"]
 [ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="7_h6sh6"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_ycq6a"]
-vertices = PackedVector2Array(279, 131, 355, 110, 342, 177, 269, 214, 17, 245, 194, 7, 177, -62, 380, -2, 360, 82, 287, 61, 230, 90, 185, 81, -155, 26, -172, 95, -236, 119, -447, 13, -377, -64, -184, -2, 148, -126, 106, -107, 57, 90, 230, 102, -56, 131, -3, -76, -17, -103, 56, 89, -213, -60, -198, -149, -89, -139)
-polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 6, 7, 8, 9), PackedInt32Array(5, 9, 10, 11), PackedInt32Array(12, 13, 14, 15, 16, 17), PackedInt32Array(18, 7, 6, 19), PackedInt32Array(20, 11, 10, 21, 4, 22), PackedInt32Array(19, 23, 24, 18), PackedInt32Array(21, 0, 4), PackedInt32Array(22, 25, 20), PackedInt32Array(22, 4, 14, 13), PackedInt32Array(26, 17, 16), PackedInt32Array(26, 16, 27, 28), PackedInt32Array(28, 27, 18), PackedInt32Array(24, 28, 18)])
-outlines = Array[PackedVector2Array]([PackedVector2Array(104, -96, 168, -56, 184, 8, 176, 72, 56, 80, -56, 120, -160, 88, -240, 128, 16, 256, 144, 248, 112, 160, 80, 152, 104, 120, 144, 144, 112, 160, 144, 248, 352, 184, 368, 96, 280, 120, 240, 96, 288, 72, 368, 96, 392, -8, 152, -136, -200, -160, -384, -72, -464, 16, -240, 128, -160, 88, -144, 24, -176, -8, -200, -56, -88, -128, -24, -96, -8, -64)])
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_drnpk"]
+vertices = PackedVector2Array(-104, 130, -45, 163, -37, 181, -68, 199, -260, 111, -259, 111, -195, 114, 222, 222, 138, 142, 138, 130, 222, 102, 279, 131, 336, 176, 211, 32, 201, 5, 202, 5, 293, -70, 366, -25, 381, 63, 289, 61, 185, -52, -447, 13, -425, -9, -424, -9, 32, 134, 42, 90, 99, 129, 104, 134, 83, 149, 35, 150, -376, -64, -199, -156, -221, -40, 77, -106, 6, -66, -4, -70, 4, -93, 61, -142, 367, 100, 353, 112, 355, 99, 92, 165, 118, 246, 26, 246, 222, 89, 200, 63, 122, 98, 109, 115, -13, 122, 14, 134, -226, 98, 167, -80, 141, -118, 114, -106, -61, -130, -145, -142, -98, -130, -166, -104, -170, 20, -170, 51)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4, 5, 6), PackedInt32Array(7, 8, 9, 10, 11, 12), PackedInt32Array(13, 14, 15), PackedInt32Array(16, 17, 18, 19, 13, 15, 20), PackedInt32Array(5, 21, 22, 23), PackedInt32Array(24, 25, 26, 27, 28, 29), PackedInt32Array(5, 23, 30, 31, 32), PackedInt32Array(33, 34, 35, 36, 37), PackedInt32Array(38, 39, 40, 18), PackedInt32Array(39, 38, 12), PackedInt32Array(11, 39, 12), PackedInt32Array(41, 8, 7, 42, 43), PackedInt32Array(29, 28, 41, 43, 3, 2), PackedInt32Array(18, 40, 19), PackedInt32Array(13, 19, 44, 45), PackedInt32Array(46, 45, 44, 10, 9, 47), PackedInt32Array(25, 46, 47), PackedInt32Array(25, 47, 26), PackedInt32Array(48, 25, 24, 49), PackedInt32Array(48, 49, 1, 0), PackedInt32Array(50, 6, 5), PackedInt32Array(16, 20, 51), PackedInt32Array(52, 16, 51, 53, 37), PackedInt32Array(37, 53, 33), PackedInt32Array(37, 36, 54), PackedInt32Array(55, 37, 54, 56), PackedInt32Array(55, 56, 57), PackedInt32Array(31, 55, 57, 32), PackedInt32Array(50, 5, 32, 58, 59)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-264, 120, -208, 96, -160, 56, -160, 16, -208, -40, -160, -96, -96, -120, -64, -120, -8, -88, -16, -64, 8, -56, 80, -96, 112, -96, 160, -72, 176, -48, 192, 8, 200, 32, 192, 56, 120, 88, 40, 80, -16, 112, -104, 120, -192, 104, -208, 96, -264, 120, -72, 208, -32, 168, 16, 144, 24, 144, -32, 168, -72, 208, 24, 256, 120, 256, 96, 152, 120, 136, 112, 128, 128, 136, 96, 152, 120, 256, 224, 232, 344, 184, 376, 104, 344, 104, 280, 120, 232, 96, 288, 72, 344, 104, 376, 104, 392, 64, 376, -32, 296, -80, 144, -128, 64, -152, 0, -152, -144, -152, -200, -168, -384, -72, -432, -16, -464, 16)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 
 [node name="Test" type="Node2D"]
@@ -83,7 +83,7 @@ unique_name_in_owner = true
 z_index = 1
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navigation_polygon = SubResource("NavigationPolygon_ycq6a")
+navigation_polygon = SubResource("NavigationPolygon_drnpk")
 
 [node name="CrystalWallrun" parent="." instance=ExtResource("4_03w3i")]
 position = Vector2(38, 11)

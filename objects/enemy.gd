@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-const SPEED: float = 150.0
+const SPEED: float = 120.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 var is_seeking = false

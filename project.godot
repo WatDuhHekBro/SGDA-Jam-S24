@@ -19,6 +19,7 @@ config/icon="res://assets/godot.svg"
 
 window/stretch/mode="viewport"
 window/stretch/scale=2.0
+window/stretch/scale_mode="integer"
 
 [input]
 

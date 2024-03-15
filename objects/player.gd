@@ -32,9 +32,7 @@ func _physics_process(_delta):
 				velocity = DirUtils.direction_to_vector(dir) * SPEED_WALLPHASE
 				break;
 	else:
-		var direction_x = Input.get_axis("ui_left", "ui_right")
-		var direction_y = Input.get_axis("ui_down", "ui_up")
-		var rectangular_vector = Vector2(direction_x, direction_y)
+		var rectangular_vector = Input.get_vector("ui_left", "ui_right", "ui_down", "ui_up")
 		var iso_direction = DirUtils.rectangular_vector_to_direction(rectangular_vector)
 		var iso_vector = DirUtils.direction_to_vector(iso_direction)
 		stored_direction = iso_direction
@@ -67,24 +65,15 @@ func _physics_process(_delta):
 
 func check_animation():
 	var dotted = velocity.dot(DirUtils.direction_to_vector(DirUtils.Directions.UP))
-	var backwards;
 	if dotted > 0:
 		$AnimatedSprite2D.play("foward")
-		backwards = false
 	elif dotted < 0:
 		$AnimatedSprite2D.play("backward")
-		backwards = true
-	else:
-		$AnimatedSprite2D.play("foward")
-		dotted = 0
 
 	if velocity.x > 0:
 		$AnimatedSprite2D.flip_h = true
 	elif velocity.x < 0:
 		$AnimatedSprite2D.flip_h = false
-	
-	if backwards:
-		$AnimatedSprite2D.flip_h = not $AnimatedSprite2D.flip_h
 
 func _on_timer_timejump_timeout():
 	position.x = stored_position_x

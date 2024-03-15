@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cpwj3nviqi8g8"
-path="res://.godot/imported/spritesheet.png-8c48d628ab073af1139e6aacfa25a3e8.ctex"
+uid="uid://btfgw4v176u1h"
+path="res://.godot/imported/dust.png-787b4c6a9f12bbccfec9a09a2c45643a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric-test/spritesheet.png"
-dest_files=["res://.godot/imported/spritesheet.png-8c48d628ab073af1139e6aacfa25a3e8.ctex"]
+source_file="res://assets/isometric-test/critters/ghost/dust.png"
+dest_files=["res://.godot/imported/dust.png-787b4c6a9f12bbccfec9a09a2c45643a.ctex"]
 
 [params]
 

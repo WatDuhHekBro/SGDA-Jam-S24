@@ -1,43 +1,30 @@
 extends CharacterBody2D
 
-const SPEED: float = 120.0
+@export var speed: float = 40.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
+@onready var target = $%Player
 var is_seeking = false
-var player_last_seen;
+var target_last_seen;
+
+func _ready() -> void:
+	nav.velocity_computed.connect(Callable(_on_velocity_computed))
 
 func _physics_process(_delta):
-	# Wait for the first physics frame so the NavigationServer can sync.
-	await get_tree().physics_frame
-	var target = $%Player
-
 	if is_seeking:
-		player_last_seen = target.global_position
-		nav.target_position = player_last_seen
+		target_last_seen = target.global_position
+		nav.set_target_position(target_last_seen)
 
 	if not nav.is_navigation_finished() || is_aggressive || is_seeking:
+		var new_velocity = global_position.direction_to(nav.get_next_path_position()) * speed
+		_on_velocity_computed(new_velocity)
 
-		var next_path_position: Vector2 = nav.get_next_path_position()
-		velocity = global_position.direction_to(next_path_position) * SPEED
-	else:
-		velocity = Vector2.ZERO
 
 	move_and_slide()	
 
-func is_in_line_of_sight(target: Node) -> bool:
-	if target == null:
-		return false
-	var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position) 
-	var result = get_world_2d().direct_space_state.intersect_ray(query)
-	
-	print("RESULT: ", result)
-	if result:
-		print("COLLIDER: ", result["collider"])
-		var collider = result["collider"]
-		if collider == target:
-			return true
-	
-	return false
+func _on_velocity_computed(safe_velocity: Vector2):
+	velocity = safe_velocity
+	move_and_slide()
 
 func _on_detection_area_body_entered(body):
 	print("SEEK FOR ", body.name)

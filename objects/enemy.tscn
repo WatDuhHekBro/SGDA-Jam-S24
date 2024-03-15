@@ -4,13 +4,12 @@
 [ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="2_jyc14"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
-radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4fck"]
 radius = 164.514
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbcow"]
-radius = 7.5
+radius = 5.0
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 2
@@ -24,7 +23,6 @@ texture = ExtResource("2_jyc14")
 shape = SubResource("CircleShape2D_e4w5n")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_postprocessing = 1
 debug_enabled = true
 
 [node name="DetectionArea" type="Area2D" parent="."]

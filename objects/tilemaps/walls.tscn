@@ -1,8 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://t1y8nb7nvum3"]
-
-[ext_resource type="TileSet" uid="uid://dtychmynjsnws" path="res://resources/tilesets/phys-on.tres" id="1_wqox2"]
-
-[node name="Walls" type="TileMap"]
-position = Vector2(0, 8)
-tile_set = ExtResource("1_wqox2")
-format = 2

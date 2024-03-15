@@ -1,9 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcywx2s3urid0"]
-
-[ext_resource type="Texture2D" uid="uid://cpwj3nviqi8g8" path="res://assets/isometric-test/spritesheet.png" id="1_fpn3q"]
+[gd_scene load_steps=5 format=3 uid="uid://bjbb4tomknukw"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cg32w"]
-texture = ExtResource("1_fpn3q")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 1:0/0 = 0
@@ -438,7 +435,6 @@ tile_size = Vector2i(32, 16)
 sources/0 = SubResource("TileSetAtlasSource_cg32w")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pfbwr"]
-texture = ExtResource("1_fpn3q")
 texture_region_size = Vector2i(32, 32)
 0:0/0 = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)

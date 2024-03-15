@@ -89,8 +89,6 @@ animation = &"foward"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q426i")
 
-[node name="Camera2D" type="Camera2D" parent="."]
-
 [node name="TimerTimejump" type="Timer" parent="."]
 wait_time = 3.0
 one_shot = true

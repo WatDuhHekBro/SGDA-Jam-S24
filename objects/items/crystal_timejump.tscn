@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://cncxfwllnk4bi"]
+[gd_scene load_steps=4 format=3 uid="uid://cncxfwllnk4bi"]
 
-[ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="1_fxdg0"]
+[ext_resource type="Texture2D" uid="uid://dnfbf6cjltr3c" path="res://assets/items/timejump.png" id="1_wtmmn"]
+[ext_resource type="Script" path="res://objects/items/floating-item.gd" id="2_msxx5"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_n30ek"]
+size = Vector2(24, 27)
 
 [node name="CrystalTimejump" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_fxdg0")
+texture = ExtResource("1_wtmmn")
+script = ExtResource("2_msxx5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_n30ek")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Sprite2D" method="_on_timer_timeout"]

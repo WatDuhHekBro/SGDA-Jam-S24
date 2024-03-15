@@ -1,16 +1,18 @@
 extends CanvasLayer
 
 
-@onready var label = $GUI/Label
+@onready var wallphase_counter = $GUI/Wallphase/Label
+@onready var wallrun_status = $GUI/Wallrun/On
+@onready var timejump_status = $GUI/Timejump/On
 @onready var gameover = $GUI/GameOver
 @onready var timer = $Timer
 var is_gameover = false
 
 
 func update_text(wallphase_count: int, has_wallrun: bool, has_timejump: bool):
-	label.text = "Dash Count: %s
-Wallrun Available? %s
-Timejump Available? %s" % [wallphase_count, "Yes" if has_wallrun else "No", "Yes" if has_timejump else "No"]
+	wallphase_counter.text = "%s" % wallphase_count
+	wallrun_status.visible = has_wallrun
+	timejump_status.visible = has_timejump
 
 
 func set_gameover(status: bool):

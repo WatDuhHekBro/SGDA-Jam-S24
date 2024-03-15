@@ -1,6 +1,12 @@
-[gd_scene load_steps=2 format=3 uid="uid://ilkpfn1d7gqh"]
+[gd_scene load_steps=8 format=3 uid="uid://ilkpfn1d7gqh"]
 
 [ext_resource type="Script" path="res://objects/gui.gd" id="1_oonh8"]
+[ext_resource type="Texture2D" uid="uid://bot3alnu2m04x" path="res://assets/items/ui/wallphase-ui.png" id="2_dsotn"]
+[ext_resource type="Texture2D" uid="uid://2jqginrb46mj" path="res://assets/items/ui/wallrun-off.png" id="2_mn8rw"]
+[ext_resource type="Texture2D" uid="uid://cn376730lukqa" path="res://assets/items/ui/timejump-on.png" id="2_qcqev"]
+[ext_resource type="Texture2D" uid="uid://bgum0x6rk3ey6" path="res://assets/items/ui/wallrun-on.png" id="3_h0tk8"]
+[ext_resource type="Texture2D" uid="uid://do32xsxk7yc57" path="res://assets/items/ui/wallphase-ui-count.png" id="3_qc8h8"]
+[ext_resource type="Texture2D" uid="uid://bihl7b6hrpric" path="res://assets/items/ui/timejump-off.png" id="4_1t6bh"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 script = ExtResource("1_oonh8")
@@ -10,18 +16,81 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 5.0
+offset_top = 5.0
+offset_right = 5.0
+offset_bottom = 5.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 
-[node name="Label" type="Label" parent="GUI"]
+[node name="Wallphase" type="Control" parent="GUI"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="GUI/Wallphase"]
 layout_mode = 0
 offset_right = 40.0
-offset_bottom = 23.0
+offset_bottom = 40.0
+texture = ExtResource("2_dsotn")
+
+[node name="TextureRect2" type="TextureRect" parent="GUI/Wallphase"]
+layout_mode = 0
+offset_left = 40.0
+offset_right = 80.0
+offset_bottom = 40.0
+texture = ExtResource("3_qc8h8")
+
+[node name="Label" type="Label" parent="GUI/Wallphase"]
+layout_mode = 0
+offset_left = 41.0
+offset_right = 60.0
+offset_bottom = 20.0
 scale = Vector2(2, 2)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Dash Count: x
-Wallrun Available? x
-Timejump Available? x"
+text = "42"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+
+[node name="Wallrun" type="Control" parent="GUI"]
+anchors_preset = 0
+offset_left = 80.0
+offset_right = 120.0
+offset_bottom = 40.0
+
+[node name="Off" type="TextureRect" parent="GUI/Wallrun"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_mn8rw")
+
+[node name="On" type="TextureRect" parent="GUI/Wallrun"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("3_h0tk8")
+
+[node name="Timejump" type="Control" parent="GUI"]
+anchors_preset = 0
+offset_left = 120.0
+offset_right = 160.0
+offset_bottom = 40.0
+
+[node name="Off" type="TextureRect" parent="GUI/Timejump"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("4_1t6bh")
+
+[node name="On" type="TextureRect" parent="GUI/Timejump"]
+visible = false
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_qcqev")
 
 [node name="GameOver" type="Label" parent="GUI"]
 visible = false

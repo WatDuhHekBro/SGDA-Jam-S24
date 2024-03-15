@@ -1,14 +1,23 @@
-[gd_scene load_steps=3 format=3 uid="uid://073woaqljm8l"]
+[gd_scene load_steps=4 format=3 uid="uid://073woaqljm8l"]
 
-[ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="1_8uv10"]
+[ext_resource type="Texture2D" uid="uid://dfetwi7s78bee" path="res://assets/items/wallrun.png" id="1_npe0h"]
+[ext_resource type="Script" path="res://objects/items/floating-item.gd" id="2_l768u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um65m"]
+size = Vector2(21, 21)
 
 [node name="CrystalWallrun" type="Area2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("1_8uv10")
+texture = ExtResource("1_npe0h")
+script = ExtResource("2_l768u")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -0.5)
 shape = SubResource("RectangleShape2D_um65m")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.25
+autostart = true
+
+[connection signal="timeout" from="Timer" to="Sprite2D" method="_on_timer_timeout"]

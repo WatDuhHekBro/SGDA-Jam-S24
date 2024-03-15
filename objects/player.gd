@@ -6,6 +6,10 @@ const SPEED = 125.0
 const SPEED_WALLPHASE = 300.0
 const ANGLE_X = cos(deg_to_rad(27))
 const ANGLE_Y = sin(deg_to_rad(27))
+# Dedicated walls to wallphase/wallrun through, special collision checks
+const NAME_WALLS = "Layer1"
+# Dedicated outer bounds of the map, prevents the player from running off into the distance
+const NAME_BOUNDS = "Layer1Bounds"
 # Toggle these by collecting items in-game, set to true for debug purposes
 var wallphase_count = 0
 var can_wallrun = false
@@ -18,8 +22,13 @@ var is_currently_wallrunning = false
 @onready var timer_timejump = $TimerTimejump
 @onready var timer_wallphase_timeout = $TimerWallphaseTimeout
 @onready var collision = $CollisionShape2D
+@onready var gui = $%GUI
 var stored_position_x = 0
 var stored_position_y = 0
+
+
+func _ready():
+	gui.update_text(wallphase_count, can_wallrun, can_timejump)
 
 
 func _physics_process(_delta):
@@ -54,13 +63,15 @@ func _physics_process(_delta):
 			timer_wallphase_timeout.start()
 			print("wallrun")
 		
-		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0:
+		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0 && !is_currently_wallphasing && !is_currently_wallrunning:
 			stored_position_x = position.x
 			stored_position_y = position.y
 			timer_timejump.start()
 			can_timejump = false
 			print("start timejump")
-
+		
+		gui.update_text(wallphase_count, can_wallrun, can_timejump)
+	
 	move_and_slide()
 
 func check_animation():
@@ -129,10 +140,13 @@ func _on_pickup_entered(area):
 	if area.name.begins_with("CrystalTimejump"):
 		can_timejump = true
 	
+	gui.update_text(wallphase_count, can_wallrun, can_timejump)
+	
 	# Delete item
 	area.queue_free()
 
 
 func kill():
 	print("KILL player call")
-	#queue_free()
+	queue_free()
+	gui.set_gameover(true)

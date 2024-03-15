@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://btfgw4v176u1h"
-path="res://.godot/imported/dust.png-787b4c6a9f12bbccfec9a09a2c45643a.ctex"
+uid="uid://bfdpe3sd774nq"
+path="res://.godot/imported/ghost_back.png-ffe4c0af78c98d1bc4d521e73994ef9f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric-test/critters/ghost/dust.png"
-dest_files=["res://.godot/imported/dust.png-787b4c6a9f12bbccfec9a09a2c45643a.ctex"]
+source_file="res://assets/ghost/ghost_back.png"
+dest_files=["res://.godot/imported/ghost_back.png-ffe4c0af78c98d1bc4d521e73994ef9f.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

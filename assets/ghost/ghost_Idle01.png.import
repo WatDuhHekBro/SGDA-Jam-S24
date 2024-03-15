@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cyweu88fokrb2"
-path="res://.godot/imported/ghost_Idle01.png-7912cc76e20ec75861a30f91852a273e.ctex"
+path="res://.godot/imported/ghost_Idle01.png-52a89a1f12547536889af4fdef6b960f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric-test/critters/ghost/ghost_Idle01.png"
-dest_files=["res://.godot/imported/ghost_Idle01.png-7912cc76e20ec75861a30f91852a273e.ctex"]
+source_file="res://assets/ghost/ghost_Idle01.png"
+dest_files=["res://.godot/imported/ghost_Idle01.png-52a89a1f12547536889af4fdef6b960f.ctex"]
 
 [params]
 

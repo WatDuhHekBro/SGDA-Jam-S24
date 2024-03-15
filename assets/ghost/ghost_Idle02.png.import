@@ -2,26 +2,26 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8xflrvf4cxy2"
-path="res://.godot/imported/ghost_IdleBL02.png-710ffd7db64b16776cfbef195d85526b.ctex"
+uid="uid://doma1rs1bhipv"
+path="res://.godot/imported/ghost_Idle02.png-78f4a572027c57f0b7da244a9ee836ff.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric-test/critters/ghost/ghost_IdleBL02.png"
-dest_files=["res://.godot/imported/ghost_IdleBL02.png-710ffd7db64b16776cfbef195d85526b.ctex"]
+source_file="res://assets/ghost/ghost_Idle02.png"
+dest_files=["res://.godot/imported/ghost_Idle02.png-78f4a572027c57f0b7da244a9ee836ff.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=3
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

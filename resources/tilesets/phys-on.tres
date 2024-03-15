@@ -1,8 +1,8 @@
 [gd_resource type="TileSet" load_steps=7 format=3 uid="uid://bhc0hslnx0myh"]
 
-[ext_resource type="Texture2D" uid="uid://c5xlrxajw7pfg" path="res://assets/isometric-test/texture_acacia_tiles.png" id="1_o7iir"]
-[ext_resource type="Texture2D" uid="uid://d11pxrspfqm2b" path="res://assets/isometric-test/building01.png" id="2_vrrjm"]
-[ext_resource type="Texture2D" uid="uid://6g6d14e6gkxn" path="res://assets/isometric-test/building02.png" id="3_kamsq"]
+[ext_resource type="Texture2D" path="res://assets/isometric-test/texture_acacia_tiles.png" id="1_o7iir"]
+[ext_resource type="Texture2D" path="res://assets/isometric-test/building01.png" id="2_vrrjm"]
+[ext_resource type="Texture2D" path="res://assets/isometric-test/building02.png" id="3_kamsq"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6ix8n"]
 texture = ExtResource("1_o7iir")

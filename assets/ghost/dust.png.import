@@ -2,20 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://doma1rs1bhipv"
-path="res://.godot/imported/ghost_Idle02.png-e9f44abeb2ac4c899347fcf6ce58354d.ctex"
+uid="uid://d0jmwswenfkey"
+path="res://.godot/imported/dust.png-e8c2ea67a21eef58a2a71bfecef1b8ab.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/isometric-test/critters/ghost/ghost_Idle02.png"
-dest_files=["res://.godot/imported/ghost_Idle02.png-e9f44abeb2ac4c899347fcf6ce58354d.ctex"]
+source_file="res://assets/ghost/dust.png"
+dest_files=["res://.godot/imported/dust.png-e8c2ea67a21eef58a2a71bfecef1b8ab.ctex"]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

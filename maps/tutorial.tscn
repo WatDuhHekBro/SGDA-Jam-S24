@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://bjbb4tomknukw"]
+[gd_scene load_steps=5 format=3 uid="uid://djca6atekxcox"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cg32w"]
 texture_region_size = Vector2i(32, 32)

@@ -99,6 +99,7 @@ skew = 0.0933187
 shape = SubResource("CapsuleShape2D_i00g6")
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [node name="TimerTimejump" type="Timer" parent="."]
 wait_time = 3.0

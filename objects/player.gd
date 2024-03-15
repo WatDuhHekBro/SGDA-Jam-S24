@@ -6,6 +6,10 @@ const SPEED = 125.0
 const SPEED_WALLPHASE = 300.0
 const ANGLE_X = cos(deg_to_rad(27))
 const ANGLE_Y = sin(deg_to_rad(27))
+# Dedicated walls to wallphase/wallrun through, special collision checks
+const NAME_WALLS = "Layer1"
+# Dedicated outer bounds of the map, prevents the player from running off into the distance
+const NAME_BOUNDS = "Layer1Bounds"
 # Toggle these by collecting items in-game, set to true for debug purposes
 var wallphase_count = 0
 var can_wallrun = false
@@ -18,8 +22,13 @@ var is_currently_wallrunning = false
 @onready var timer_timejump = $TimerTimejump
 @onready var timer_wallphase_timeout = $TimerWallphaseTimeout
 @onready var collision = $CollisionShape2D
+@onready var gui = $%GUI
 var stored_position_x = 0
 var stored_position_y = 0
+
+
+func _ready():
+	gui.update_text(wallphase_count, can_wallrun, can_timejump)
 
 
 func _physics_process(_delta):
@@ -54,13 +63,15 @@ func _physics_process(_delta):
 			timer_wallphase_timeout.start()
 			print("wallrun")
 		
-		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0:
+		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0 && !is_currently_wallphasing && !is_currently_wallrunning:
 			stored_position_x = position.x
 			stored_position_y = position.y
 			timer_timejump.start()
 			can_timejump = false
 			print("start timejump")
-
+		
+		gui.update_text(wallphase_count, can_wallrun, can_timejump)
+	
 	move_and_slide()
 
 func check_animation():
@@ -84,24 +95,25 @@ func _on_timer_timejump_timeout():
 # Selective Collisions: https://forum.godotengine.org/t/how-can-i-enable-and-disable-collisions-from-script/20731/2
 
 func _on_auxiliary_collision_area_body_entered(body):
-	if body.name == "Walls":
+	if body.name == NAME_WALLS:
 		timer_wallphase_timeout.stop()
 		print("stop wallphase timeout")
 		
 		if is_currently_wallrunning:
 			print("wallrun start")
 			is_currently_wallrunning = false
-	elif body.name == "Bounds":
+	elif body.name == NAME_BOUNDS:
 		collision.set_deferred("disabled", false)
 		is_currently_wallphasing = false
 		is_currently_wallrunning = false
 		print("wallphase safety cancel (bounds)")
+	#elif body.name == ""
 	
 	print('[Wallphase Enter] ', body.name)
 
 
 func _on_auxiliary_collision_area_body_exited(body):
-	if body.name == "Walls":
+	if body.name == NAME_WALLS:
 		# First exit of walls on wallphase should end
 		# Exiting a wall should stop the wallrun
 		# Make sure to call set_deferred() instead of setting directly, causes issues otherwise
@@ -127,10 +139,12 @@ func _on_auxiliary_collision_area_area_entered(area):
 	if area.name.begins_with("CrystalTimejump"):
 		can_timejump = true
 	
+	gui.update_text(wallphase_count, can_wallrun, can_timejump)
+	
 	# Delete item
 	area.queue_free()
 
 
 func kill():
 	print("KILL player call")
-	#queue_free()
+	queue_free()

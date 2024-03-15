@@ -18,6 +18,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 23.0
 scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "Dash Count: x
 Wallrun Available? x
 Timejump Available? x"

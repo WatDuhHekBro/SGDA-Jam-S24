@@ -13,7 +13,7 @@ Wallrun Available? %s
 Timejump Available? %s" % [wallphase_count, "Yes" if has_wallrun else "No", "Yes" if has_timejump else "No"]
 
 
-func set_game_over(status: bool):
+func set_gameover(status: bool):
 	is_gameover = status
 	
 	if status:
@@ -23,3 +23,8 @@ func set_game_over(status: bool):
 
 func _on_timer_timeout():
 	gameover.visible = !gameover.visible
+
+
+func _input(event):
+	if event.is_action_pressed("menu-start") and is_gameover:
+		get_tree().reload_current_scene()

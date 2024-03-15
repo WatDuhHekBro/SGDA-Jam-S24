@@ -148,4 +148,4 @@ func _on_auxiliary_collision_area_area_entered(area):
 func kill():
 	print("KILL player call")
 	queue_free()
-	gui.set_game_over(true)
+	gui.set_gameover(true)

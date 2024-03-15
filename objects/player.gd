@@ -51,7 +51,6 @@ func _physics_process(_delta):
 		velocity = iso_vector * SPEED
 
 		# Abilities/Actions
-		print(wallphase_count, " ", can_wallrun, " ", can_timejump)
 		if wallphase_count > 0 && Input.is_action_just_released("action-wallphase"):
 			is_currently_wallphasing = true
 			wallphase_count -= 1

@@ -4,7 +4,7 @@ extends CanvasLayer
 @onready var wallphase_counter = $GUI/Wallphase/Label
 @onready var wallrun_status = $GUI/Wallrun/On
 @onready var timejump_status = $GUI/Timejump/On
-@onready var gameover = $GUI/GameOver
+@onready var gameover = $GameOver
 @onready var timer = $Timer
 var is_gameover = false
 

@@ -92,18 +92,17 @@ offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_qcqev")
 
-[node name="GameOver" type="Label" parent="GUI"]
+[node name="GameOver" type="Label" parent="."]
 visible = false
-layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -243.0
-offset_top = -87.0
-offset_right = -167.0
-offset_bottom = -69.0
+offset_left = -221.0
+offset_top = -78.0
+offset_right = -145.0
+offset_bottom = -60.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(6, 6)
@@ -113,7 +112,7 @@ text = "GAME OVER"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Label" type="Label" parent="GUI/GameOver"]
+[node name="Label" type="Label" parent="GameOver"]
 layout_mode = 0
 offset_left = -21.1667
 offset_top = 15.0

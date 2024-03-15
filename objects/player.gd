@@ -83,33 +83,35 @@ func _on_timer_timejump_timeout():
 
 # Selective Collisions: https://forum.godotengine.org/t/how-can-i-enable-and-disable-collisions-from-script/20731/2
 
-func _on_auxiliary_collision_area_body_entered(body):
-	if body.name == "Walls":
-		timer_wallphase_timeout.stop()
-		print("stop wallphase timeout")
+func _on_wall_entered(body):
+	timer_wallphase_timeout.stop()
+	print("stop wallphase timeout")
 		
-		if is_currently_wallrunning:
-			print("wallrun start")
-			is_currently_wallrunning = false
-	elif body.name == "Bounds":
-		collision.set_deferred("disabled", false)
-		is_currently_wallphasing = false
+	if is_currently_wallrunning:
+		print("wallrun start")
 		is_currently_wallrunning = false
-		print("wallphase safety cancel (bounds)")
 	
 	print('[Wallphase Enter] ', body.name)
 
 
-func _on_auxiliary_collision_area_body_exited(body):
-	if body.name == "Walls":
-		# First exit of walls on wallphase should end
-		# Exiting a wall should stop the wallrun
-		# Make sure to call set_deferred() instead of setting directly, causes issues otherwise
-		collision.set_deferred("disabled", false)
-		is_currently_wallphasing = false
+func _on_wall_exited(body):
+	# First exit of walls on wallphase should end
+	# Exiting a wall should stop the wallrun
+	# Make sure to call set_deferred() instead of setting directly, causes issues otherwise
+	collision.set_deferred("disabled", false)
+	is_currently_wallphasing = false
 	
 	print('[Wallphase Exit] ', body.name)
 
+func _on_bound_entered(body):
+	print('[Bound Enter] ', body.name)
+	# Case if player wallphases into nowhere
+	timer_wallphase_timeout.stop()
+	print("stop wallphase timeout")
+	collision.set_deferred("disabled", false)
+	is_currently_wallphasing = false
+	is_currently_wallrunning = false
+	print("wallphase safety cancel")
 
 # Case if player wallphases into nowhere
 func _on_timer_wallphase_timeout_timeout():
@@ -119,7 +121,7 @@ func _on_timer_wallphase_timeout_timeout():
 	print("wallphase safety cancel")
 
 
-func _on_auxiliary_collision_area_area_entered(area):
+func _on_pickup_entered(area):
 	if area.name.begins_with("CrystalWallphase"):
 		wallphase_count += area.refills
 	if area.name.begins_with("CrystalWallrun"):

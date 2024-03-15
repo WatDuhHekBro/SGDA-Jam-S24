@@ -9,10 +9,11 @@
 radius = 164.514
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_dbcow"]
-radius = 5.0
+radius = 9.16667
 
 [node name="Enemy" type="CharacterBody2D"]
-collision_layer = 2
+collision_layer = 8
+collision_mask = 3
 script = ExtResource("1_hxnli")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -26,20 +27,20 @@ shape = SubResource("CircleShape2D_e4w5n")
 debug_enabled = true
 
 [node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
 shape = SubResource("CircleShape2D_g4fck")
 
 [node name="KillArea" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="KillArea"]
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_dbcow")
 
-[connection signal="body_entered" from="DetectionArea" to="." method="_on_detection_area_body_entered"]
-[connection signal="body_exited" from="DetectionArea" to="." method="_on_detection_area_body_exited"]
-[connection signal="body_entered" from="KillArea" to="." method="_on_kill_area_body_entered"]
+[connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]
+[connection signal="body_exited" from="DetectionArea" to="." method="_on_player_exited"]
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]

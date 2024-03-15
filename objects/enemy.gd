@@ -11,6 +11,8 @@ func _ready() -> void:
 	nav.velocity_computed.connect(Callable(_on_velocity_computed))
 
 func _physics_process(_delta):
+	if nav.is_navigation_finished():
+		_on_velocity_computed(Vector2(0, 0))
 	if is_seeking:
 		target_last_seen = target.global_position
 		nav.set_target_position(target_last_seen)
@@ -26,19 +28,15 @@ func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
 
-func _on_detection_area_body_entered(body):
-	print("SEEK FOR ", body.name)
-	if body.name == "Player":
-		print("SEEK TRUE")
-		is_seeking = true
+func _on_player_entered(body):
+	print("SEEK TRUE")
+	is_seeking = true
 
+func _on_player_exited(body):
+	print("SEEK FALSE")
+	is_seeking = false
 
-func _on_detection_area_body_exited(body):
-	if body.name == "Player":
-		print("SEEK FALSE")
-		is_seeking = false
+func _on_kill_player_entered(body: Node2D):
+	print("KILLING PLAYER")
+	$%Player.kill()
 
-
-func _on_kill_area_body_entered(body):
-	if body.name == "Player":
-		body.kill()

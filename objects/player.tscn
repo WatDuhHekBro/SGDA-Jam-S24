@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=14 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
 [ext_resource type="Texture2D" uid="uid://d0jmwswenfkey" path="res://assets/ghost/dust.png" id="2_cv8qm"]
@@ -51,12 +51,17 @@ radius = 6.66667
 height = 21.3333
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i00g6"]
-radius = 2.21152
-height = 9.49487
+radius = 2.76556
+height = 10.6817
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03pqj"]
+radius = 2.76556
+height = 10.6817
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
-collision_layer = 2
+collision_layer = 4
+collision_mask = 3
 script = ExtResource("1_5f28u")
 
 [node name="TrailParticle" type="CPUParticles2D" parent="."]
@@ -84,20 +89,6 @@ animation = &"foward"
 rotation = 1.5708
 shape = SubResource("CapsuleShape2D_q426i")
 
-[node name="AuxiliaryCollisionArea" type="Area2D" parent="CollisionShape2D"]
-modulate = Color(0, 0, 0, 1)
-position = Vector2(4.76837e-07, -4.76837e-07)
-rotation = 1.052
-scale = Vector2(1.64952, -1.85516)
-skew = 0.0112922
-collision_layer = 2
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/AuxiliaryCollisionArea"]
-position = Vector2(5.89589e-08, -1.3845e-07)
-rotation = 1.00969
-skew = 0.0933187
-shape = SubResource("CapsuleShape2D_i00g6")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="TimerTimejump" type="Timer" parent="."]
@@ -108,8 +99,42 @@ one_shot = true
 wait_time = 0.25
 one_shot = true
 
-[connection signal="area_entered" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_area_entered"]
-[connection signal="body_entered" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_entered"]
-[connection signal="body_exited" from="CollisionShape2D/AuxiliaryCollisionArea" to="." method="_on_auxiliary_collision_area_body_exited"]
+[node name="OutOfBoundsPrevention" type="Area2D" parent="."]
+editor_description = "This area detection will read the physics bitmask layer mask where bounds are placed (bitmask layer 2)"
+position = Vector2(4.76835e-07, 4.76839e-07)
+rotation = 2.6228
+scale = Vector2(1.64952, -1.85516)
+skew = 0.0112922
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBoundsPrevention"]
+modulate = Color(0, 1, 0, 1)
+position = Vector2(5.89589e-08, -1.3845e-07)
+rotation = 1.00969
+skew = 0.0933187
+shape = SubResource("CapsuleShape2D_i00g6")
+
+[node name="CollisionDetection" type="Area2D" parent="."]
+editor_description = "This area detection will read a physics bitmask layer mask where walls and pickup objects are on (currently that bitmask layer is 1)"
+modulate = Color(0, 0, 0, 1)
+position = Vector2(4.76835e-07, 4.76839e-07)
+rotation = 2.6228
+scale = Vector2(1.64952, -1.85516)
+skew = 0.0112922
+collision_layer = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
+light_mask = 0
+visibility_layer = 2
+position = Vector2(5.89589e-08, -1.3845e-07)
+rotation = 1.00969
+skew = 0.0933187
+shape = SubResource("CapsuleShape2D_03pqj")
+
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]
+[connection signal="body_entered" from="OutOfBoundsPrevention" to="." method="_on_bound_entered"]
+[connection signal="area_entered" from="CollisionDetection" to="." method="_on_pickup_entered"]
+[connection signal="body_entered" from="CollisionDetection" to="." method="_on_wall_entered"]
+[connection signal="body_exited" from="CollisionDetection" to="." method="_on_wall_exited"]

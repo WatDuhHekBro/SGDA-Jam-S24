@@ -1,6 +1,6 @@
 extends CharacterBody2D
 
-@export var speed: float = 40.0
+@export var speed: float = 50.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var target = $%Player

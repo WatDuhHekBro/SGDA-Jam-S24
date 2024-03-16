@@ -44,12 +44,13 @@ texture = ExtResource("3_qc8h8")
 
 [node name="Label" type="Label" parent="GUI/Wallphase"]
 layout_mode = 0
-offset_left = 41.0
-offset_right = 60.0
-offset_bottom = 20.0
+offset_left = 39.0
+offset_top = 3.0
+offset_right = 58.0
+offset_bottom = 23.0
 scale = Vector2(2, 2)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "42"
+text = "69"
 horizontal_alignment = 1
 vertical_alignment = 1
 clip_text = true

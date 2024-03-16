@@ -65,13 +65,6 @@ layer_0/y_sort_enabled = true
 layer_0/y_sort_origin = 16
 layer_0/tile_data = PackedInt32Array(196594, 655360, 1, 196595, 655360, 1, 196596, 655360, 1, 131058, 262144, 5, -14, 655360, 1, -131086, 655360, 1, -196622, 327680, 5, -196619, 655360, 1, -196618, 655360, 1, -196617, 655360, 1, -8, 655360, 1, 65528, 655360, 1, 196600, 327680, 5, 196599, 655360, 1, 196597, 0, 5)
 
-[node name="Player" parent="Map" instance=ExtResource("2_pvbfv")]
-unique_name_in_owner = true
-z_index = 1
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/Player"]
-remote_path = NodePath("../../../Camera2D")
-
 [node name="Objects" type="Node2D" parent="."]
 
 [node name="CrystalWallrun" parent="Objects" instance=ExtResource("4_03w3i")]
@@ -86,6 +79,13 @@ position = Vector2(175, 117)
 [node name="Enemy" parent="Objects" instance=ExtResource("7_h6sh6")]
 position = Vector2(-348, 93)
 collision_layer = 1
+
+[node name="Player" parent="." instance=ExtResource("2_pvbfv")]
+unique_name_in_owner = true
+z_index = 1
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)

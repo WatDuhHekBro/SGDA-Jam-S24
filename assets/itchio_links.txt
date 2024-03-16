@@ -1,0 +1,6 @@
+FONT		https://caffinate.itch.io/abaddon
+ISO TILES	https://scrabling.itch.io/pixel-isometric-tiles
+TREES		https://cainos.itch.io/pixel-art-top-down-basic
+BUILDING	https://leonardobanana.itch.io/pixel-constructions
+BUILDING	https://maxparata.itch.io/counrty-side
+UNUSED MISC	https://aquanoctis.itch.io/isoslicedungeonassets

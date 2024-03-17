@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://do63xl4amjqwy"]
+[gd_scene load_steps=39 format=3 uid="uid://do63xl4amjqwy"]
 
 [ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
 [ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_4n3h6"]
@@ -25,6 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://dmo43evxofyiw" path="res://assets/enemies/villager/villager06_IdleB02.png" id="21_xdxcr"]
 [ext_resource type="Texture2D" uid="uid://eba4xlcg0r82" path="res://assets/enemies/villager/villager06_IdleF01.png" id="22_od3b7"]
 [ext_resource type="Texture2D" uid="uid://c2a5vtc0wqi2v" path="res://assets/enemies/villager/villager06_IdleF02.png" id="23_1o6pj"]
+[ext_resource type="Texture2D" uid="uid://b71xpw3wixx8i" path="res://assets/miscIcons/warning.png" id="26_buoup"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
 radius = 7.0
@@ -185,6 +186,19 @@ radius = 7.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4fck"]
 radius = 164.514
 
+[sub_resource type="Curve" id="Curve_ndoq0"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0879121, 0.384615), -3.05263, -3.05263, 0, 0, Vector2(0.313187, 0.032967), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="Gradient" id="Gradient_e345b"]
+interpolation_mode = 2
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="Curve" id="Curve_qc3ny"]
+min_value = 0.99
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989011, -0.758242), 0.0, 0.0, 0, 0]
+point_count = 2
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 3
@@ -249,6 +263,23 @@ shape = SubResource("CircleShape2D_g4fck")
 
 [node name="ReactionTime" type="Timer" parent="."]
 one_shot = true
+
+[node name="PlayerDetected" type="CPUParticles2D" parent="."]
+visible = false
+z_index = 10
+position = Vector2(0, -57)
+lifetime = 2.5
+preprocess = 5.4
+explosiveness = 0.1
+texture = ExtResource("26_buoup")
+gravity = Vector2(0, 0)
+scale_amount_min = 1.5
+scale_amount_max = 1.5
+scale_amount_curve = SubResource("Curve_ndoq0")
+color_ramp = SubResource("Gradient_e345b")
+hue_variation_min = 0.06
+hue_variation_max = 0.06
+hue_variation_curve = SubResource("Curve_qc3ny")
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://ilkpfn1d7gqh"]
+[gd_scene load_steps=15 format=3 uid="uid://ilkpfn1d7gqh"]
 
 [ext_resource type="Script" path="res://objects/gui.gd" id="1_oonh8"]
 [ext_resource type="Texture2D" uid="uid://bot3alnu2m04x" path="res://assets/items/ui/wallphase-ui.png" id="2_dsotn"]
@@ -8,6 +8,12 @@
 [ext_resource type="Texture2D" uid="uid://do32xsxk7yc57" path="res://assets/items/ui/wallphase-ui-count.png" id="3_qc8h8"]
 [ext_resource type="Texture2D" uid="uid://bihl7b6hrpric" path="res://assets/items/ui/timejump-off.png" id="4_1t6bh"]
 [ext_resource type="Texture2D" uid="uid://b607s6wlehb3v" path="res://assets/screens/losescreen/losescreen.png" id="8_nkfqs"]
+[ext_resource type="Texture2D" uid="uid://cwenibgb7kffh" path="res://assets/xelu-controller-prompts/kbm/Mouse_Left_Key_Dark.png" id="8_pa0jb"]
+[ext_resource type="Texture2D" uid="uid://t88jifxc2yck" path="res://assets/xelu-controller-prompts/kbm/Mouse_Right_Key_Dark.png" id="9_k5mij"]
+[ext_resource type="Texture2D" uid="uid://cxjhoqavet56n" path="res://assets/xelu-controller-prompts/kbm/Mouse_Middle_Key_Dark.png" id="10_uqfxo"]
+[ext_resource type="Texture2D" uid="uid://ylxc5y1ewma4" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_B.png" id="11_mb656"]
+[ext_resource type="Texture2D" uid="uid://b8pyo5b3vsaq1" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_A.png" id="12_sbjmv"]
+[ext_resource type="Texture2D" uid="uid://7rqgdbel8mdy" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_X.png" id="13_6v6tg"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 script = ExtResource("1_oonh8")
@@ -93,6 +99,61 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 texture = ExtResource("2_qcqev")
+
+[node name="HotbarHelpers" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+scale = Vector2(0.5, 0.5)
+
+[node name="KBM-Wallphase" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 162.0
+offset_top = 170.0
+offset_right = 262.0
+offset_bottom = 270.0
+texture = ExtResource("8_pa0jb")
+
+[node name="KBM-Wallrun" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 328.0
+offset_top = 170.0
+offset_right = 428.0
+offset_bottom = 270.0
+texture = ExtResource("9_k5mij")
+
+[node name="KBM-Timejump" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 486.0
+offset_top = 172.0
+offset_right = 586.0
+offset_bottom = 272.0
+texture = ExtResource("10_uqfxo")
+
+[node name="Xbox-Wallphase" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 234.0
+offset_top = 166.0
+offset_right = 334.0
+offset_bottom = 266.0
+texture = ExtResource("11_mb656")
+
+[node name="Xbox-Wallrun" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 398.0
+offset_top = 166.0
+offset_right = 498.0
+offset_bottom = 266.0
+texture = ExtResource("12_sbjmv")
+
+[node name="Xbox-Timejump" type="TextureRect" parent="HotbarHelpers"]
+layout_mode = 0
+offset_left = 556.0
+offset_top = 166.0
+offset_right = 656.0
+offset_bottom = 266.0
+texture = ExtResource("13_6v6tg")
 
 [node name="GameOver" type="Control" parent="."]
 visible = false

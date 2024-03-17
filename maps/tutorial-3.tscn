@@ -85,3 +85,14 @@ remote_path = NodePath("../../Camera2D")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-11, 131)
 zoom = Vector2(2, 2)
+
+[node name="Label" type="Label" parent="."]
+offset_left = -362.0
+offset_top = 104.0
+offset_right = -134.0
+offset_bottom = 164.0
+scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Other times, you'll need
+to return to where you
+were before"

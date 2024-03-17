@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dktdmmne5mr4m"]
+[gd_scene load_steps=14 format=3 uid="uid://dktdmmne5mr4m"]
 
 [ext_resource type="Script" path="res://maps/menu.gd" id="1_8vl3h"]
 [ext_resource type="Texture2D" uid="uid://bdrlpin3jwvd" path="res://assets/screens/titlescreen/titlescreenA01.png" id="1_g4i1i"]
@@ -13,64 +13,63 @@
 [ext_resource type="Texture2D" uid="uid://b2218ew8hjroq" path="res://assets/screens/menu/menuTransition04.png" id="10_p78br"]
 [ext_resource type="Texture2D" uid="uid://cniaubdb23n4b" path="res://assets/screens/menu/menuIcon.png" id="11_evnyx"]
 
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_x22ab"]
-frames = 2
-speed_scale = 1.5
-frame_0/texture = ExtResource("5_0vh0v")
-frame_1/texture = ExtResource("6_katxb")
-frame_1/duration = 1.0
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_vm2wl"]
-frames = 4
-speed_scale = 2.0
-frame_0/texture = ExtResource("1_g4i1i")
-frame_1/texture = ExtResource("2_ecsba")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("3_bqtg0")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("4_tfsqd")
-frame_3/duration = 1.0
-
-[sub_resource type="AnimatedTexture" id="AnimatedTexture_655hc"]
-frames = 4
-one_shot = true
-speed_scale = 15.0
-frame_0/texture = ExtResource("7_ya763")
-frame_1/texture = ExtResource("8_4qki8")
-frame_1/duration = 1.0
-frame_2/texture = ExtResource("9_mlg7h")
-frame_2/duration = 1.0
-frame_3/texture = ExtResource("10_p78br")
-frame_3/duration = 1.0
+[sub_resource type="SpriteFrames" id="SpriteFrames_vobcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0vh0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_katxb")
+}],
+"loop": true,
+"name": &"menu",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g4i1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ecsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bqtg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tfsqd")
+}],
+"loop": true,
+"name": &"title",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ya763")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4qki8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mlg7h")
+}, {
+"duration": 5.0,
+"texture": ExtResource("10_p78br")
+}],
+"loop": false,
+"name": &"transition",
+"speed": 12.0
+}]
 
 [node name="Menu" type="CanvasLayer"]
 script = ExtResource("1_8vl3h")
 
-[node name="Screens" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = -14.0
-offset_top = -41.0
-offset_right = 181.0
-offset_bottom = 85.0
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(571, 337)
 scale = Vector2(6, 6)
-
-[node name="MainMenu" type="TextureRect" parent="Screens"]
-layout_mode = 0
-offset_right = 1.0
-offset_bottom = 1.0
-texture = SubResource("AnimatedTexture_x22ab")
-
-[node name="Title" type="TextureRect" parent="Screens"]
-layout_mode = 0
-offset_right = 195.0
-offset_bottom = 126.0
-texture = SubResource("AnimatedTexture_vm2wl")
-
-[node name="Transition" type="TextureRect" parent="Screens"]
-visible = false
-layout_mode = 0
-texture = SubResource("AnimatedTexture_655hc")
+sprite_frames = SubResource("SpriteFrames_vobcn")
+animation = &"transition"
+autoplay = "title"
 
 [node name="HoverAreas" type="Control" parent="."]
 layout_mode = 3
@@ -115,6 +114,7 @@ offset_bottom = 333.0
 scale = Vector2(3, 3)
 texture = ExtResource("11_evnyx")
 
+[connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]
 [connection signal="mouse_entered" from="HoverAreas/Newgame" to="." method="_on_newgame_mouse_entered"]
 [connection signal="mouse_entered" from="HoverAreas/Options" to="." method="_on_options_mouse_entered"]
 [connection signal="mouse_entered" from="HoverAreas/Credits" to="." method="_on_credits_mouse_entered"]

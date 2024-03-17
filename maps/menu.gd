@@ -3,11 +3,13 @@ extends CanvasLayer
 
 const positions = [Vector2(731, 317), Vector2(795, 382), Vector2(795, 449), Vector2(884, 574)]
 var cursor_position = 0
+# Copies cursor_position just in case the player moves their mouse during menu transition
+var transition_to = 0
 
 enum States {TITLE, MENU}
 var current_state = States.TITLE
 
-@onready var title = $Screens/Title
+@onready var background = $Background
 @onready var cursor = $Cursor
 
 
@@ -31,19 +33,25 @@ func _input(event):
 	if event.is_action_pressed("menu-start"):
 		match current_state:
 			States.TITLE:
-				title.visible = false
+				background.play("menu")
 				cursor.visible = true
 				current_state = States.MENU
 			States.MENU:
-				match cursor_position:
-					0:
-						get_tree().change_scene_to_file("res://maps/storytime.tscn")
-					1:
-						print("options")
-					2:
-						print("credits")
-					3:
-						get_tree().quit()
+				cursor.visible = false
+				background.play("transition")
+				transition_to = cursor_position
+
+
+func _on_background_animation_finished():
+	match transition_to:
+		0:
+			get_tree().change_scene_to_file("res://maps/storytime.tscn")
+		1:
+			print("options")
+		2:
+			print("credits")
+		3:
+			get_tree().quit()
 
 
 func _on_newgame_mouse_entered():

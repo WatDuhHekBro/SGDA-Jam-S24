@@ -29,6 +29,22 @@ y_sort_enabled = true
 
 [node name="Ground" parent="Map" instance=ExtResource("2_ae6iu")]
 
+[node name="NavLayer1" type="NavigationRegion2D" parent="Map"]
+z_index = -1
+z_as_relative = false
+y_sort_enabled = true
+navigation_polygon = SubResource("NavigationPolygon_rh7lh")
+
+[node name="Layer1" type="TileMap" parent="Map/NavLayer1"]
+z_index = 1
+z_as_relative = false
+y_sort_enabled = true
+position = Vector2(0, -8)
+tile_set = ExtResource("8_67bix")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/tile_data = PackedInt32Array(327677, 196608, 3, 327678, 196608, 3, 262142, 196608, 3, 262141, 262144, 3, 327679, 196608, 3, 327676, 262144, 3, 393213, 196608, 3, 393214, 196608, 3, 393215, 196608, 3, 262143, 0, 3, 196608, 0, 3, 262144, 131072, 3, 327680, 131072, 3, 393216, 131072, 3, 458751, 131072, 3, 524287, 131072, 3, 458750, 131072, 3, 327681, 0, 3, 262145, 0, 3, 196609, 0, 3, 262147, 7, 0)
+
 [node name="AboveGround" type="Node2D" parent="Map"]
 z_index = 1
 y_sort_enabled = true
@@ -54,22 +70,6 @@ position = Vector2(76, 134)
 
 [node name="CrystalWallphase" parent="Map/AboveGround/Objects" instance=ExtResource("7_lm2wk")]
 position = Vector2(175, 117)
-
-[node name="NavLayer1" type="NavigationRegion2D" parent="Map"]
-z_index = -1
-z_as_relative = false
-y_sort_enabled = true
-navigation_polygon = SubResource("NavigationPolygon_rh7lh")
-
-[node name="Layer1" type="TileMap" parent="Map/NavLayer1"]
-z_index = 1
-z_as_relative = false
-y_sort_enabled = true
-position = Vector2(0, -8)
-tile_set = ExtResource("8_67bix")
-format = 2
-layer_0/y_sort_enabled = true
-layer_0/tile_data = PackedInt32Array(327677, 196608, 3, 327678, 196608, 3, 262142, 196608, 3, 262141, 262144, 3, 327679, 196608, 3, 327676, 262144, 3, 393213, 196608, 3, 393214, 196608, 3, 393215, 196608, 3, 262143, 0, 3, 196608, 0, 3, 262144, 131072, 3, 327680, 131072, 3, 393216, 131072, 3, 458751, 131072, 3, 524287, 131072, 3, 458750, 131072, 3, 327681, 0, 3, 262145, 0, 3, 196609, 0, 3, 262147, 7, 0)
 
 [node name="Layer2" type="TileMap" parent="Map"]
 z_index = 1

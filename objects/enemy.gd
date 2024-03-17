@@ -19,7 +19,7 @@ func _ready() -> void:
 func _physics_process(_delta):
 	if nav.is_navigation_finished():
 		_on_velocity_computed(Vector2(0, 0))
-	if is_seeking:
+	if is_seeking && is_line_of_sight():
 		target_last_seen = target.global_position
 		nav.set_target_position(target_last_seen)
 	
@@ -28,22 +28,26 @@ func _physics_process(_delta):
 		_on_velocity_computed(new_velocity)
 	
 	check_animation()
-	move_and_slide()
+
+func is_line_of_sight() -> bool:
+	var space_state = get_world_2d().direct_space_state
+	var query = PhysicsRayQueryParameters2D.create(global_position, target.global_position)
+	var result = space_state.intersect_ray(query)
+	if result:
+		return result.collider == target
+	return false
 
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
 
-func _on_player_entered(_body):
-	print("SEEK TRUE")
+func _on_player_entered(body):
 	is_seeking = true
 
-func _on_player_exited(_body):
-	print("SEEK FALSE")
+func _on_player_exited(body):
 	is_seeking = false
 
-func _on_kill_player_entered(_body: Node2D):
-	print("KILLING PLAYER")
+func _on_kill_player_entered(body: Node2D):
 	$%Player.kill()
 
 func check_animation():

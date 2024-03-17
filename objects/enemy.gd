@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 const DirUtils = preload("res://objects/utils/directions.gd")
 
-@export var speed: float = 50.0
+@export var speed: float = 120.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var target = $%Player

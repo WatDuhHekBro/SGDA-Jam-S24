@@ -79,7 +79,6 @@ position = Vector2(-410, -76)
 
 [node name="Enemy" parent="Objects" instance=ExtResource("7_crd1b")]
 position = Vector2(-223, 206)
-speed = 60.0
 
 [node name="Enemy2" parent="Objects" instance=ExtResource("7_crd1b")]
 position = Vector2(128, 64)
@@ -100,7 +99,7 @@ position = Vector2(-28, -90)
 position = Vector2(-116, -134)
 
 [node name="Enemy8" parent="Objects" instance=ExtResource("7_crd1b")]
-position = Vector2(-198, -174)
+position = Vector2(-286, 48)
 
 [node name="Enemy9" parent="Objects" instance=ExtResource("7_crd1b")]
 position = Vector2(129, 179)

@@ -70,15 +70,12 @@ position = Vector2(47, 128)
 
 [node name="Enemy" parent="Objects" instance=ExtResource("4_r7cdx")]
 position = Vector2(-213, -42)
-speed = 60.0
 
 [node name="Enemy2" parent="Objects" instance=ExtResource("4_r7cdx")]
 position = Vector2(155, 150)
-speed = 60.0
 
 [node name="Enemy3" parent="Objects" instance=ExtResource("4_r7cdx")]
 position = Vector2(31, 4)
-speed = 60.0
 
 [node name="Enemy4" parent="Objects" instance=ExtResource("4_r7cdx")]
 position = Vector2(117.913, -71.3016)

@@ -69,12 +69,8 @@ layer_0/tile_data = PackedInt32Array(-458737, 524288, 3, -393201, 524288, 3, -32
 position = Vector2(-89, 81)
 
 [node name="Enemy" parent="Objects" instance=ExtResource("4_avmvy")]
-position = Vector2(-218, -77)
-speed = 55.0
-
-[node name="Enemy2" parent="Objects" instance=ExtResource("4_avmvy")]
-position = Vector2(-178, -57)
-speed = 55.0
+position = Vector2(-203, -75)
+speed = 135.0
 
 [node name="Player" parent="." instance=ExtResource("6_45kis")]
 unique_name_in_owner = true

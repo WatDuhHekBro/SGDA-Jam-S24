@@ -133,6 +133,11 @@ func _on_timer_wallphase_timeout_timeout():
 
 
 func _on_pickup_entered(area):
+	# Very janky way of moving to the next level, select which level it is
+	if area.name == "EscapeArea":
+		get_tree().change_scene_to_file(area.teleport_to)
+	
+	# Ability pickups
 	if area.name.begins_with("CrystalWallphase"):
 		wallphase_count += area.refills
 	if area.name.begins_with("CrystalWallrun"):

@@ -97,9 +97,9 @@ animation = &"page1"
 autoplay = "page1"
 
 [node name="Label" type="Label" parent="."]
-offset_left = 171.0
+offset_left = 176.0
 offset_top = 459.0
-offset_right = 581.0
+offset_right = 584.0
 offset_bottom = 501.0
 scale = Vector2(2, 2)
 theme_override_colors/font_color = Color(0, 0, 0, 1)

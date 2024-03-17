@@ -1,14 +1,20 @@
 extends CharacterBody2D
 
+const DirUtils = preload("res://objects/utils/directions.gd")
+
 @export var speed: float = 50.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var target = $%Player
+@onready var anim = $AnimatedSprite2D
 var is_seeking = false
 var target_last_seen;
 
 func _ready() -> void:
 	nav.velocity_computed.connect(Callable(_on_velocity_computed))
+	
+	# Randomized textures
+	print(anim.sprite_frames)
 
 func _physics_process(_delta):
 	if nav.is_navigation_finished():
@@ -16,27 +22,39 @@ func _physics_process(_delta):
 	if is_seeking:
 		target_last_seen = target.global_position
 		nav.set_target_position(target_last_seen)
-
+	
 	if not nav.is_navigation_finished() || is_aggressive || is_seeking:
 		var new_velocity = global_position.direction_to(nav.get_next_path_position()) * speed
 		_on_velocity_computed(new_velocity)
-
-
-	move_and_slide()	
+	
+	check_animation()
+	move_and_slide()
 
 func _on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity
 	move_and_slide()
 
-func _on_player_entered(body):
+func _on_player_entered(_body):
 	print("SEEK TRUE")
 	is_seeking = true
 
-func _on_player_exited(body):
+func _on_player_exited(_body):
 	print("SEEK FALSE")
 	is_seeking = false
 
-func _on_kill_player_entered(body: Node2D):
+func _on_kill_player_entered(_body: Node2D):
 	print("KILLING PLAYER")
 	$%Player.kill()
 
+func check_animation():
+	var dotted = velocity.dot(DirUtils.direction_to_vector(DirUtils.Directions.UP))
+	
+	if dotted > 0:
+		anim.play("forward")
+	elif dotted < 0:
+		anim.play("backward")
+	
+	if velocity.x > 0:
+		anim.flip_h = true
+	elif velocity.x < 0:
+		anim.flip_h = false

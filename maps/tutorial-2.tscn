@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://cuopoe48tstvp"]
+[gd_scene load_steps=9 format=3 uid="uid://cuopoe48tstvp"]
 
 [ext_resource type="PackedScene" uid="uid://ilkpfn1d7gqh" path="res://objects/gui.tscn" id="1_ofct2"]
 [ext_resource type="TileSet" uid="uid://bykso8em2wkca" path="res://resources/tilesets/phys-off.tres" id="2_ivglw"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://073woaqljm8l" path="res://objects/items/crystal_wallrun.tscn" id="4_qln04"]
 [ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="4_r7cdx"]
 [ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="6_2dd40"]
+[ext_resource type="PackedScene" uid="uid://dn65exu2iavkb" path="res://objects/utils/escape-area.tscn" id="7_w3u0e"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rh7lh"]
 vertices = PackedVector2Array(-142, -7, -259, -65, -65, -163, -137, -10, 7, -82, 243, -8, 225, 2, 57, -82, 32, -94, 211, 169, 142, 135, 148, 132, 121, 94, -35, 16, 25, -14, 32, -17, 39, -14, 215, 74, 273, 69, 340, 104, 265, 74, 240, 86, 148, 108)
@@ -60,6 +61,7 @@ tile_set = ExtResource("2_ivglw")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/y_sort_origin = 16
+layer_0/tile_data = PackedInt32Array(-458737, 524288, 3, -393201, 524288, 3, -327665, 524288, 3, -458736, 524288, 3, -393200, 524288, 3, -327664, 524288, 3, -458735, 524288, 3, -393199, 524288, 3, -327663, 524288, 3)
 
 [node name="Objects" type="Node2D" parent="."]
 
@@ -91,6 +93,10 @@ position = Vector2(-231, 63)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
+
+[node name="EscapeArea" parent="." instance=ExtResource("7_w3u0e")]
+position = Vector2(381, 73)
+teleport_to = "res://maps/tutorial-3.tscn"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-231, 63)

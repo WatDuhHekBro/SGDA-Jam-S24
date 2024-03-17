@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://c7vqu13f8843w"]
+[gd_scene load_steps=9 format=3 uid="uid://c7vqu13f8843w"]
 
 [ext_resource type="PackedScene" uid="uid://ilkpfn1d7gqh" path="res://objects/gui.tscn" id="1_hfdbf"]
 [ext_resource type="TileSet" uid="uid://bykso8em2wkca" path="res://resources/tilesets/phys-off.tres" id="2_2ng6q"]
 [ext_resource type="TileSet" uid="uid://bhc0hslnx0myh" path="res://resources/tilesets/phys-on.tres" id="3_s47v8"]
 [ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="4_qxgre"]
 [ext_resource type="PackedScene" uid="uid://dus1nai686kk8" path="res://objects/items/crystal_wallphase.tscn" id="7_a1et1"]
+[ext_resource type="PackedScene" uid="uid://dn65exu2iavkb" path="res://objects/utils/escape-area.tscn" id="7_r6ds5"]
 [ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="8_p3sps"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rh7lh"]
@@ -51,6 +52,7 @@ tile_set = ExtResource("2_2ng6q")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/y_sort_origin = 8
+layer_0/tile_data = PackedInt32Array(-458765, 524288, 3, -393229, 524288, 3, -327693, 524288, 3, -458764, 524288, 3, -393228, 524288, 3, -327692, 524288, 3, -458763, 524288, 3, -393227, 524288, 3, -327691, 524288, 3)
 
 [node name="Layer3" type="TileMap" parent="Map"]
 z_index = 1
@@ -96,11 +98,15 @@ position = Vector2(-231, 63)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
 remote_path = NodePath("../../Camera2D")
 
+[node name="EscapeArea" parent="." instance=ExtResource("7_r6ds5")]
+position = Vector2(-64, -172)
+teleport_to = "res://maps/tutorial-2.tscn"
+
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-231, 63)
 zoom = Vector2(2, 2)
 
-[node name="Label" type="Label" parent="."]
+[node name="LabelBreakThrough" type="Label" parent="."]
 offset_left = -39.0
 offset_top = 225.0
 offset_right = 111.0
@@ -109,3 +115,12 @@ scale = Vector2(2, 2)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 text = "BREAK through walls...
 BREAK THE MOLD!"
+
+[node name="LabelEscape" type="Label" parent="."]
+offset_left = -112.0
+offset_top = -220.0
+offset_right = -65.0
+offset_bottom = -202.0
+scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Escape!"

@@ -1,0 +1,52 @@
+[gd_scene load_steps=11 format=3 uid="uid://xjg2ouemua53"]
+
+[ext_resource type="PackedScene" uid="uid://ilkpfn1d7gqh" path="res://objects/gui.tscn" id="1_ly47m"]
+[ext_resource type="PackedScene" uid="uid://b4amugyqcd8d6" path="res://objects/map/ground.tscn" id="2_b85d2"]
+[ext_resource type="PackedScene" uid="uid://d1vy1kpdkv75l" path="res://objects/map/above_ground.tscn" id="3_b57sv"]
+[ext_resource type="PackedScene" uid="uid://dn65exu2iavkb" path="res://objects/utils/escape-area.tscn" id="3_k3let"]
+[ext_resource type="PackedScene" uid="uid://cy24n4x40qapx" path="res://objects/map/layer_1.tscn" id="4_g052f"]
+[ext_resource type="PackedScene" uid="uid://cdjap8duk8oym" path="res://objects/map/label_break_through.tscn" id="4_p1h0b"]
+[ext_resource type="PackedScene" uid="uid://x1g4n6l40kpf" path="res://objects/map/label_escape.tscn" id="5_8hl00"]
+[ext_resource type="PackedScene" uid="uid://ckloswg85w362" path="res://objects/map/layer_2.tscn" id="5_gbvsj"]
+[ext_resource type="PackedScene" uid="uid://cu07v3xogggg3" path="res://objects/map/layer_3.tscn" id="6_m22r8"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_rh7lh"]
+vertices = PackedVector2Array(582, 87, 15, 368, -643, 39, -82, -246)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-668, 40, 15, 381, 608, 88, -83, -259)])
+source_geometry_group_name = &"navigation_polygon_source_group"
+agent_radius = 11.0
+
+[node name="Template" type="Node2D"]
+
+[node name="GUI" parent="." instance=ExtResource("1_ly47m")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Map" type="Node2D" parent="."]
+editor_description = "For adding new layers: create a new Node2D, call it Layer#, enable y-sort and shift the transform of the layer by -8# from the previous layer. Now inside the layer add the tilemap make sure to shift the y-sort origin by positive 8 y-units from the previous layer."
+y_sort_enabled = true
+
+[node name="Ground" parent="Map" instance=ExtResource("2_b85d2")]
+
+[node name="AboveGround" parent="Map" instance=ExtResource("3_b57sv")]
+
+[node name="NavLayer1" parent="Map" instance=ExtResource("4_g052f")]
+navigation_polygon = SubResource("NavigationPolygon_rh7lh")
+
+[node name="Layer2" parent="Map" instance=ExtResource("5_gbvsj")]
+
+[node name="Layer3" parent="Map" instance=ExtResource("6_m22r8")]
+
+[node name="LabelBreakThrough" parent="." instance=ExtResource("4_p1h0b")]
+
+[node name="LabelEscape" parent="." instance=ExtResource("5_8hl00")]
+
+[node name="EscapeArea" parent="." instance=ExtResource("3_k3let")]
+position = Vector2(-79, -225)
+teleport_to = "res://maps/tutorial-3.tscn"
+
+[editable path="GUI"]
+[editable path="Map/Ground"]
+[editable path="Map/AboveGround"]
+[editable path="Map/NavLayer1"]

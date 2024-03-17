@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://f8wyo48titwl"]
+
+[ext_resource type="Script" path="res://maps/utils/MainMenu (Old).gd" id="1_jufp3"]
+[ext_resource type="Texture2D" uid="uid://cm0qxdsrxrplj" path="res://assets/main_menu/title.png" id="2_8ey22"]
+[ext_resource type="Texture2D" uid="uid://da2ji6py6kahv" path="res://assets/main_menu/label_new_game.png" id="3_6v04v"]
+[ext_resource type="Texture2D" uid="uid://c7mkwd5215day" path="res://assets/main_menu/label_options.png" id="4_7fbpu"]
+[ext_resource type="Texture2D" uid="uid://b8vkxl8ij2yoy" path="res://assets/main_menu/version.png" id="5_7p8rb"]
+[ext_resource type="Texture2D" uid="uid://dvw2ka35xdov8" path="res://assets/main_menu/characters.png" id="6_brxav"]
+
+[node name="MarginContainer" type="MarginContainer"]
+custom_minimum_size = Vector2(120, 80)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1, 0.988201)
+script = ExtResource("1_jufp3")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Title" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("2_8ey22")
+stretch_mode = 3
+
+[node name="MenuOptions" type="VBoxContainer" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 6
+
+[node name="ButtonPlayer" type="TextureRect" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+texture = ExtResource("3_6v04v")
+stretch_mode = 3
+
+[node name="ButtonOptions" type="TextureRect" parent="HBoxContainer/VBoxContainer/MenuOptions"]
+layout_mode = 2
+texture = ExtResource("4_7fbpu")
+stretch_mode = 3
+
+[node name="VersionNote" type="TextureRect" parent="HBoxContainer/VBoxContainer"]
+layout_mode = 2
+texture = ExtResource("5_7p8rb")
+stretch_mode = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Illustration" type="TextureRect" parent="HBoxContainer/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("6_brxav")
+
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/ButtonPlayer" to="." method="_on_button_player_gui_input"]
+[connection signal="gui_input" from="HBoxContainer/VBoxContainer/MenuOptions/ButtonOptions" to="." method="_on_button_options_gui_input"]

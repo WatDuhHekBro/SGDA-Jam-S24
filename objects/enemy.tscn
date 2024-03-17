@@ -201,7 +201,7 @@ point_count = 2
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
-collision_mask = 3
+collision_mask = 11
 script = ExtResource("1_hxnli")
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]

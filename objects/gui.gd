@@ -7,6 +7,9 @@ extends CanvasLayer
 @onready var gameover = $GameOver
 var is_gameover = false
 
+func _ready():
+	visible = true
+
 
 func update_text(wallphase_count: int, has_wallrun: bool, has_timejump: bool):
 	wallphase_counter.text = "%s" % wallphase_count

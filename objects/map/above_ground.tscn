@@ -1,0 +1,33 @@
+[gd_scene load_steps=6 format=3 uid="uid://d1vy1kpdkv75l"]
+
+[ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="1_6qtsf"]
+[ext_resource type="PackedScene" uid="uid://073woaqljm8l" path="res://objects/items/crystal_wallrun.tscn" id="2_x6t2a"]
+[ext_resource type="PackedScene" uid="uid://dus1nai686kk8" path="res://objects/items/crystal_wallphase.tscn" id="3_nuwks"]
+[ext_resource type="PackedScene" uid="uid://cncxfwllnk4bi" path="res://objects/items/crystal_timejump.tscn" id="4_u31ok"]
+[ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="5_llqw1"]
+
+[node name="AboveGround" type="Node2D"]
+z_index = 1
+y_sort_enabled = true
+
+[node name="Enemies" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="Enemy" parent="Enemies" instance=ExtResource("5_llqw1")]
+position = Vector2(-208, 152)
+collision_layer = 1
+
+[node name="Player" parent="." instance=ExtResource("1_6qtsf")]
+unique_name_in_owner = true
+
+[node name="Objects" type="Node2D" parent="."]
+y_sort_enabled = true
+
+[node name="CrystalWallrun" parent="Objects" instance=ExtResource("2_x6t2a")]
+position = Vector2(144, 21)
+
+[node name="CrystalTimejump" parent="Objects" instance=ExtResource("4_u31ok")]
+position = Vector2(76, 134)
+
+[node name="CrystalWallphase" parent="Objects" instance=ExtResource("3_nuwks")]
+position = Vector2(175, 117)

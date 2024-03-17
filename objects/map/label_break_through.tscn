@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://cdjap8duk8oym"]
+
+[node name="LabelBreakThrough" type="Label"]
+offset_left = -39.0
+offset_top = 225.0
+offset_right = 111.0
+offset_bottom = 264.0
+scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "BREAK through walls...
+BREAK THE MOLD!"

@@ -22,20 +22,20 @@ var is_currently_wallrunning = false
 @onready var timer_timejump = $TimerTimejump
 @onready var timer_wallphase_timeout = $TimerWallphaseTimeout
 @onready var collision = $CollisionShape2D
-@onready var gui = $%GUI
+@onready var gui = %GUI
 var stored_position_x = 0
 var stored_position_y = 0
 
 
 func _ready():
-	gui.update_text(wallphase_count, can_wallrun, can_timejump)
+	if gui != null:
+		gui.update_text(wallphase_count, can_wallrun, can_timejump)
 
 
 func _physics_process(_delta):
 	if is_currently_wallphasing || is_currently_wallrunning:
 		collision.set_deferred("disabled", true)
 		
-		# Messy code, needs refactor
 		for dir in DirUtils.DIRECTIONS :
 			if stored_direction == dir:
 				velocity = DirUtils.direction_to_vector(dir) * SPEED_WALLPHASE
@@ -55,20 +55,17 @@ func _physics_process(_delta):
 			is_currently_wallphasing = true
 			wallphase_count -= 1
 			timer_wallphase_timeout.start()
-			print("wallphase")
 		
 		if can_wallrun && Input.is_action_just_released("action-wallrun"):
 			is_currently_wallrunning = true
 			can_wallrun = false
 			timer_wallphase_timeout.start()
-			print("wallrun")
 		
 		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0 && !is_currently_wallphasing && !is_currently_wallrunning:
 			stored_position_x = position.x
 			stored_position_y = position.y
 			timer_timejump.start()
 			can_timejump = false
-			print("start timejump")
 		
 		gui.update_text(wallphase_count, can_wallrun, can_timejump)
 	
@@ -77,7 +74,7 @@ func _physics_process(_delta):
 func check_animation():
 	var dotted = velocity.dot(DirUtils.direction_to_vector(DirUtils.Directions.UP))
 	if dotted > 0:
-		$AnimatedSprite2D.play("foward")
+		$AnimatedSprite2D.play("forward")
 	elif dotted < 0:
 		$AnimatedSprite2D.play("backward")
 
@@ -89,7 +86,6 @@ func check_animation():
 func _on_timer_timejump_timeout():
 	position.x = stored_position_x
 	position.y = stored_position_y
-	print("execute timejump after 5s")
 
 
 # Selective Collisions: https://forum.godotengine.org/t/how-can-i-enable-and-disable-collisions-from-script/20731/2
@@ -152,6 +148,5 @@ func _on_pickup_entered(area):
 
 
 func kill():
-	print("KILL player call")
 	queue_free()
 	gui.set_gameover(true)

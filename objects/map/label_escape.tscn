@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://x1g4n6l40kpf"]
+
+[node name="LabelEscape" type="Label"]
+offset_left = -112.0
+offset_top = -220.0
+offset_right = -65.0
+offset_bottom = -202.0
+scale = Vector2(2, 2)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "Escape!"

@@ -2,18 +2,29 @@ extends Node2D
 
 
 const BOOK_STATES = ["turn1to2", "turn2to3"]
-const BOOK_STATES_TEXT = ["Start text", "This is some moar sample text.", "yeet the pear"]
+const BOOK_STATES_TEXT = [[
+		"Start text", 
+		"Buenas tardes"
+	], [
+		"This is some moar sample text.", 
+		"NEXT PAGEE"
+	], [
+		"yeet the pear, I just want to fill until the next label so we know",
+		"what the next page is going to be."
+	]];
 var book_states_index = 0
 @onready var book = $Book
-@onready var label = $Label
+@onready var labels = [$FirstPageLabel, $SecondPageLabel]
+var label
 
 
 func _ready():
-	label.text = BOOK_STATES_TEXT[0]
-
+	label = 0
+	labels[label].text = BOOK_STATES_TEXT[0][0]
 
 # Returns true if done flipping pages
 func flip_page():
+
 	# Progress between states
 	if book_states_index < BOOK_STATES.size():
 		var state = BOOK_STATES[book_states_index]
@@ -25,12 +36,17 @@ func flip_page():
 
 
 func _on_timer_timeout():
-	label.visible_characters += 1
-
+	if labels[label].visible_ratio < 1:
+		labels[label].visible_ratio += 0.1
+	elif label == labels.size() - 1:
+		return;
+	else:
+		start_next_label()
 
 func _input(event):
 	if event.is_action_pressed("menu-start"):
-		label.visible = false
+		for i in range(labels.size()):
+			labels[i].visible = false
 		var is_done_flipping_pages = flip_page()
 		
 		if is_done_flipping_pages:
@@ -38,7 +54,11 @@ func _input(event):
 
 
 func _on_book_animation_finished():
-	# Start the next label
-	label.visible = true
-	label.text = BOOK_STATES_TEXT[book_states_index]
-	label.visible_characters = 0
+	start_next_label()
+
+func start_next_label():
+	label = (label + 1) % labels.size()
+	labels[label].visible = true
+	# current book side increments by 1 every time we flip a page
+	labels[label].text = BOOK_STATES_TEXT[book_states_index][label]
+	labels[label].visible_ratio = 0

@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://ckloswg85w362"]
+
+[ext_resource type="TileSet" uid="uid://bykso8em2wkca" path="res://resources/tilesets/phys-off.tres" id="1_x7n01"]
+
+[node name="Layer2" type="TileMap"]
+z_index = 1
+y_sort_enabled = true
+position = Vector2(0, -16)
+tile_set = ExtResource("1_x7n01")
+format = 2
+layer_0/y_sort_enabled = true
+layer_0/y_sort_origin = 8

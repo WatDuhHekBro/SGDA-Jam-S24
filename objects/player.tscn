@@ -42,21 +42,18 @@ animations = [{
 "texture": ExtResource("6_gwxa7")
 }],
 "loop": true,
-"name": &"foward",
+"name": &"forward",
 "speed": 5.0
 }]
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_q426i"]
-radius = 6.66667
-height = 21.3333
+[sub_resource type="CircleShape2D" id="CircleShape2D_toufd"]
+radius = 13.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i00g6"]
-radius = 2.76556
-height = 10.6817
+[sub_resource type="CircleShape2D" id="CircleShape2D_8qjdm"]
+radius = 12.0
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_03pqj"]
-radius = 2.76556
-height = 10.6817
+[sub_resource type="CircleShape2D" id="CircleShape2D_l8kc3"]
+radius = 11.0
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -83,12 +80,10 @@ anim_offset_curve = SubResource("Curve_g5yqu")
 y_sort_enabled = true
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_hp871")
-animation = &"foward"
-frame_progress = 0.963415
+animation = &"forward"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-rotation = 1.5708
-shape = SubResource("CapsuleShape2D_q426i")
+shape = SubResource("CircleShape2D_toufd")
 
 [node name="TimerTimejump" type="Timer" parent="."]
 wait_time = 2.0
@@ -101,35 +96,26 @@ one_shot = true
 [node name="OutOfBoundsPrevention" type="Area2D" parent="."]
 editor_description = "This area detection will read the physics bitmask layer mask where bounds are placed (bitmask layer 2)"
 position = Vector2(4.76835e-07, 4.76839e-07)
-rotation = 2.6228
-scale = Vector2(1.64952, -1.85516)
-skew = 0.0112922
 collision_layer = 0
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="OutOfBoundsPrevention"]
 modulate = Color(0, 1, 0, 1)
-position = Vector2(5.89589e-08, -1.3845e-07)
-rotation = 1.00969
-skew = 0.0933187
-shape = SubResource("CapsuleShape2D_i00g6")
+shape = SubResource("CircleShape2D_8qjdm")
 
 [node name="CollisionDetection" type="Area2D" parent="."]
 editor_description = "This area detection will read a physics bitmask layer mask where walls and pickup objects are on (currently that bitmask layer is 1)"
 modulate = Color(0, 0, 0, 1)
-position = Vector2(4.76835e-07, 4.76839e-07)
-rotation = 2.6228
-scale = Vector2(1.64952, -1.85516)
-skew = 0.0112922
 collision_layer = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionDetection"]
 light_mask = 0
 visibility_layer = 2
 position = Vector2(5.89589e-08, -1.3845e-07)
-rotation = 1.00969
-skew = 0.0933187
-shape = SubResource("CapsuleShape2D_03pqj")
+shape = SubResource("CircleShape2D_l8kc3")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)
 
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

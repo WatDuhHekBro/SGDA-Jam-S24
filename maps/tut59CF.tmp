@@ -40,48 +40,12 @@ navigation_polygon = SubResource("NavigationPolygon_rh7lh")
 
 [node name="Layer1" type="TileMap" parent="Map/NavigationRegion2D"]
 z_index = 1
-z_as_relative = false
 y_sort_enabled = true
 position = Vector2(0, -8)
 tile_set = ExtResource("3_xelm8")
 format = 2
 layer_0/y_sort_enabled = true
 layer_0/tile_data = PackedInt32Array(327676, 393216, 1, 393212, 393216, 1, 327677, 393216, 1, 393213, 393216, 1, 327678, 393216, 1, 393214, 393216, 1, 327679, 393216, 1, 393215, 393216, 1, 262144, 393216, 1, 327680, 393216, 1, 262145, 393216, 1, 327681, 393216, 1, 262146, 393216, 1, 327682, 393216, 1, 262147, 393216, 1, 327683, 393216, 1, 262148, 393216, 1, 327684, 393216, 1, 262149, 393216, 1, 327685, 393216, 1, 262150, 393216, 1, 327686, 393216, 1, 262151, 393216, 1, 327687, 393216, 1, 262152, 393216, 1, 327688, 393216, 1, 262153, 393216, 1, 327689, 393216, 1, 262154, 393216, 1, 327690, 393216, 1, -262148, 393216, 1, -196612, 393216, 1, -131076, 393216, 1, -65540, 393216, 1, -4, 393216, 1, 65532, 393216, 1, 131068, 393216, 1, 196604, 393216, 1, 262140, 393216, 1, -262147, 393216, 1, -196611, 393216, 1, -131075, 393216, 1, -65539, 393216, 1, -3, 393216, 1, 65533, 393216, 1, 131069, 393216, 1, 196605, 393216, 1, 262141, 393216, 1, -262146, 393216, 1, -196610, 393216, 1, -262145, 393216, 1, -196609, 393216, 1, -327680, 393216, 1, -262144, 393216, 1, -327679, 393216, 1, -262143, 393216, 1, -327678, 393216, 1, -262142, 393216, 1, -327677, 393216, 1, -262141, 393216, 1, -327676, 393216, 1, -262140, 393216, 1, -327675, 393216, 1, -262139, 393216, 1, -327674, 393216, 1, -262138, 393216, 1, -327673, 393216, 1, -262137, 393216, 1, -327672, 393216, 1, -262136, 393216, 1, -327671, 393216, 1, -262135, 393216, 1, -327670, 393216, 1, -262134, 393216, 1)
-
-[node name="AboveGround" type="Node2D" parent="Map"]
-z_index = 1
-y_sort_enabled = true
-
-[node name="Player" parent="Map/AboveGround" instance=ExtResource("6_2dd40")]
-unique_name_in_owner = true
-position = Vector2(-231, 63)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/AboveGround/Player"]
-remote_path = NodePath("../../../../Camera2D")
-
-[node name="Enemies" type="Node2D" parent="Map/AboveGround"]
-y_sort_enabled = true
-
-[node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("4_r7cdx")]
-position = Vector2(-213, -42)
-
-[node name="Enemy2" parent="Map/AboveGround/Enemies" instance=ExtResource("4_r7cdx")]
-position = Vector2(155, 150)
-
-[node name="Enemy3" parent="Map/AboveGround/Enemies" instance=ExtResource("4_r7cdx")]
-position = Vector2(31, 4)
-
-[node name="Enemy4" parent="Map/AboveGround/Enemies" instance=ExtResource("4_r7cdx")]
-position = Vector2(117.913, -71.3016)
-
-[node name="Enemy5" parent="Map/AboveGround/Enemies" instance=ExtResource("4_r7cdx")]
-position = Vector2(-15, -117)
-
-[node name="Objects" type="Node2D" parent="Map/AboveGround"]
-y_sort_enabled = true
-
-[node name="CrystalWallrun" parent="Map/AboveGround/Objects" instance=ExtResource("4_qln04")]
-position = Vector2(47, 128)
 
 [node name="Layer2" type="TileMap" parent="Map"]
 z_index = 1
@@ -101,6 +65,34 @@ format = 2
 layer_0/y_sort_enabled = true
 layer_0/y_sort_origin = 16
 layer_0/tile_data = PackedInt32Array(-458737, 524288, 3, -393201, 524288, 3, -327665, 524288, 3, -458736, 524288, 3, -393200, 524288, 3, -327664, 524288, 3, -458735, 524288, 3, -393199, 524288, 3, -327663, 524288, 3)
+
+[node name="Objects" type="Node2D" parent="."]
+
+[node name="CrystalWallrun" parent="Objects" instance=ExtResource("4_qln04")]
+position = Vector2(47, 128)
+
+[node name="Enemy" parent="Objects" instance=ExtResource("4_r7cdx")]
+position = Vector2(-213, -42)
+
+[node name="Enemy2" parent="Objects" instance=ExtResource("4_r7cdx")]
+position = Vector2(155, 150)
+
+[node name="Enemy3" parent="Objects" instance=ExtResource("4_r7cdx")]
+position = Vector2(31, 4)
+
+[node name="Enemy4" parent="Objects" instance=ExtResource("4_r7cdx")]
+position = Vector2(117.913, -71.3016)
+
+[node name="Enemy5" parent="Objects" instance=ExtResource("4_r7cdx")]
+position = Vector2(-15, -117)
+
+[node name="Player" parent="." instance=ExtResource("6_2dd40")]
+unique_name_in_owner = true
+z_index = 1
+position = Vector2(-231, 63)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Player"]
+remote_path = NodePath("../../Camera2D")
 
 [node name="EscapeArea" parent="." instance=ExtResource("7_w3u0e")]
 position = Vector2(381, 73)

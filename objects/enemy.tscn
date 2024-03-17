@@ -1,20 +1,42 @@
-[gd_scene load_steps=11 format=3 uid="uid://do63xl4amjqwy"]
+[gd_scene load_steps=35 format=3 uid="uid://do63xl4amjqwy"]
 
 [ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
-[ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_coxco"]
-[ext_resource type="Texture2D" uid="uid://chviflssqlny8" path="res://assets/godot.svg" id="2_jyc14"]
-[ext_resource type="Texture2D" uid="uid://cbteniltx6w0n" path="res://assets/enemies/villager/villager01_IdleB02.png" id="3_5k2yg"]
+[ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_4n3h6"]
+[ext_resource type="Texture2D" uid="uid://cbteniltx6w0n" path="res://assets/enemies/villager/villager01_IdleB02.png" id="3_ornpd"]
 [ext_resource type="Texture2D" uid="uid://d23h8tlquamwd" path="res://assets/enemies/villager/villager01_IdleF01.png" id="4_ubmky"]
+[ext_resource type="Texture2D" uid="uid://ddx8donco3fvr" path="res://assets/enemies/villager/villager02_IdleB01.png" id="4_xgbm2"]
+[ext_resource type="Texture2D" uid="uid://ccy2m4jdcbh55" path="res://assets/enemies/villager/villager02_IdleB02.png" id="5_68ykd"]
 [ext_resource type="Texture2D" uid="uid://chq4f4yok30ry" path="res://assets/enemies/villager/villager01_IdleF02.png" id="5_oueat"]
+[ext_resource type="Texture2D" uid="uid://byyfjg1shv581" path="res://assets/enemies/villager/villager02_IdleF01.png" id="6_el7qw"]
+[ext_resource type="Texture2D" uid="uid://nbinfjpv3vpt" path="res://assets/enemies/villager/villager02_IdleF02.png" id="7_75xo2"]
+[ext_resource type="Texture2D" uid="uid://dx7mqe4rr8ujo" path="res://assets/enemies/villager/villager03_IdleB01.png" id="8_hdu6n"]
+[ext_resource type="Texture2D" uid="uid://pgg6e5uocmcp" path="res://assets/enemies/villager/villager03_IdleB02.png" id="9_pvlpw"]
+[ext_resource type="Texture2D" uid="uid://cakujv0b3lit8" path="res://assets/enemies/villager/villager03_IdleF01.png" id="10_87c8c"]
+[ext_resource type="Texture2D" uid="uid://273fot3tqsj1" path="res://assets/enemies/villager/villager03_IdleF02.png" id="11_mxwfh"]
+[ext_resource type="Texture2D" uid="uid://c1i6vo10mssby" path="res://assets/enemies/villager/villager04_IdleB01.png" id="12_s7rlp"]
+[ext_resource type="Texture2D" uid="uid://dmrul7h0j4g6g" path="res://assets/enemies/villager/villager04_IdleB02.png" id="13_tl675"]
+[ext_resource type="Texture2D" uid="uid://dmco1i1so54tj" path="res://assets/enemies/villager/villager04_IdleF01.png" id="14_ux8ki"]
+[ext_resource type="Texture2D" uid="uid://cocdfs1mf8eo2" path="res://assets/enemies/villager/villager04_IdleF02.png" id="15_r2pxu"]
+[ext_resource type="Texture2D" uid="uid://vhy0q7qji3js" path="res://assets/enemies/villager/villager05_IdleB01.png" id="16_344f5"]
+[ext_resource type="Texture2D" uid="uid://ckkbbeaq1ol2f" path="res://assets/enemies/villager/villager05_IdleB02.png" id="17_bnmxk"]
+[ext_resource type="Texture2D" uid="uid://b628efpmeen4d" path="res://assets/enemies/villager/villager05_IdleF01.png" id="18_1cr4s"]
+[ext_resource type="Texture2D" uid="uid://db7ft5n02fsv5" path="res://assets/enemies/villager/villager05_IdleF02.png" id="19_5uff0"]
+[ext_resource type="Texture2D" uid="uid://c5i1r73ohvkqf" path="res://assets/enemies/villager/villager06_IdleB01.png" id="20_sut1g"]
+[ext_resource type="Texture2D" uid="uid://dmo43evxofyiw" path="res://assets/enemies/villager/villager06_IdleB02.png" id="21_xdxcr"]
+[ext_resource type="Texture2D" uid="uid://eba4xlcg0r82" path="res://assets/enemies/villager/villager06_IdleF01.png" id="22_od3b7"]
+[ext_resource type="Texture2D" uid="uid://c2a5vtc0wqi2v" path="res://assets/enemies/villager/villager06_IdleF02.png" id="23_1o6pj"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
+radius = 7.0
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_4csns"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("2_coxco")
+"texture": ExtResource("2_4n3h6")
 }, {
 "duration": 1.0,
-"texture": ExtResource("3_5k2yg")
+"texture": ExtResource("3_ornpd")
 }],
 "loop": true,
 "name": &"backward",
@@ -32,42 +54,182 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_1wg8y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_xgbm2")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_68ykd")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_el7qw")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_75xo2")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ahhwm"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_hdu6n")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_pvlpw")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10_87c8c")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_mxwfh")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0vwep"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("12_s7rlp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_tl675")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_ux8ki")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_r2pxu")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xwrw1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_344f5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("17_bnmxk")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_1cr4s")
+}, {
+"duration": 1.0,
+"texture": ExtResource("19_5uff0")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j71i7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("20_sut1g")
+}, {
+"duration": 1.0,
+"texture": ExtResource("21_xdxcr")
+}],
+"loop": true,
+"name": &"backward",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("22_od3b7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("23_1o6pj")
+}],
+"loop": true,
+"name": &"forward",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dbcow"]
+radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4fck"]
 radius = 164.514
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_dbcow"]
-radius = 9.16667
 
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_hxnli")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-sprite_frames = SubResource("SpriteFrames_4csns")
-animation = &"backward"
-autoplay = "forward"
-frame_progress = 0.50974
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-visible = false
-scale = Vector2(0.15, 0.15)
-texture = ExtResource("2_jyc14")
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+target_desired_distance = 5.0
+debug_enabled = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e4w5n")
 
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-debug_enabled = true
+[node name="Villagers" type="Node2D" parent="."]
+position = Vector2(0, -23)
 
-[node name="DetectionArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 4
+[node name="Villager0" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_4csns")
+animation = &"backward"
+autoplay = "forward"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
-shape = SubResource("CircleShape2D_g4fck")
+[node name="Villager1" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_1wg8y")
+animation = &"forward"
+autoplay = "forward"
+
+[node name="Villager2" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_ahhwm")
+animation = &"forward"
+autoplay = "forward"
+
+[node name="Villager3" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_0vwep")
+animation = &"forward"
+autoplay = "forward"
+
+[node name="Villager4" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_xwrw1")
+animation = &"forward"
+autoplay = "forward"
+
+[node name="Villager5" type="AnimatedSprite2D" parent="Villagers"]
+sprite_frames = SubResource("SpriteFrames_j71i7")
+animation = &"forward"
+autoplay = "forward"
 
 [node name="KillArea" type="Area2D" parent="."]
 collision_layer = 0
@@ -77,6 +239,18 @@ collision_mask = 4
 scale = Vector2(1.2, 1.2)
 shape = SubResource("CircleShape2D_dbcow")
 
+[node name="DetectionArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DetectionArea"]
+shape = SubResource("CircleShape2D_g4fck")
+
+[node name="ReactionTime" type="Timer" parent="."]
+one_shot = true
+
+[connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]
 [connection signal="body_exited" from="DetectionArea" to="." method="_on_player_exited"]
-[connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
+[connection signal="timeout" from="ReactionTime" to="." method="_on_reaction_time_timeout"]

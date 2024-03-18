@@ -3,14 +3,14 @@ extends Node2D
 
 const BOOK_STATES = ["turn1to2", "turn2to3"]
 const BOOK_STATES_TEXT = [[
-		"Not so long ago, there were only two races", 
-		"One of light, One of Darkness"
+		"Start text", 
+		"Buenas tardes"
 	], [
-		"For unknown reasons, a third race appeared", 
-		"despised by both light and shadow but belonging to both"
+		"This is some moar sample text.", 
+		"NEXT PAGEE"
 	], [
-		"Rumor speaks of a realm where shadow and light can coexist",
-		"One brave little ghost is trying to escape there"
+		"yeet the pear, I just want to fill until the next label so we know",
+		"what the next page is going to be."
 	]];
 var book_states_index = 0
 @onready var book = $Book

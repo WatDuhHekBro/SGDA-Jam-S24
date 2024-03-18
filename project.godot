@@ -11,13 +11,9 @@ config_version=5
 [application]
 
 config/name="SGDA-Jam-S24"
-run/main_scene="res://maps/offgameplay/menu.tscn"
+run/main_scene="res://maps/menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://assets/godot.svg"
-
-[autoload]
-
-Music="*res://objects/music.tscn"
 
 [display]
 

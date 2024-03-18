@@ -1,34 +1,25 @@
-[gd_scene load_steps=6 format=3 uid="uid://dus1nai686kk8"]
+[gd_scene load_steps=5 format=3 uid="uid://dus1nai686kk8"]
 
 [ext_resource type="Script" path="res://objects/items/crystal_wallphase.gd" id="1_2726d"]
-[ext_resource type="Texture2D" uid="uid://dbckl7k5s4fyr" path="res://assets/miscIcons/dash.png" id="2_555rt"]
+[ext_resource type="Texture2D" uid="uid://iexsahmc5awi" path="res://assets/items/wallphase.png" id="2_dsf04"]
+[ext_resource type="Script" path="res://objects/items/floating-item.gd" id="3_okwpg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70b5u"]
 size = Vector2(28, 27)
 
-[sub_resource type="Gradient" id="Gradient_x5ahv"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.298701, 0.987013, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0.890411, 0.890411, 0.890411, 1, 0.701536, 0.701536, 0.701536, 1, 0, 0, 0, 1)
-
-[sub_resource type="Gradient" id="Gradient_25f5c"]
-offsets = PackedFloat32Array(0, 0.298701, 1)
-colors = PackedColorArray(0, 0, 0, 1, 0.928571, 0.928571, 0.928571, 1, 1, 1, 1, 1)
-
 [node name="CrystalWallphase" type="Area2D"]
 script = ExtResource("1_2726d")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_dsf04")
+script = ExtResource("3_okwpg")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2, 2.5)
 shape = SubResource("RectangleShape2D_70b5u")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.25
 autostart = true
 
-[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
-texture = ExtResource("2_555rt")
-gravity = Vector2(0, 0)
-scale_amount_min = 1.5
-scale_amount_max = 2.5
-color_ramp = SubResource("Gradient_x5ahv")
-color_initial_ramp = SubResource("Gradient_25f5c")
+[connection signal="timeout" from="Timer" to="Sprite2D" method="_on_timer_timeout"]

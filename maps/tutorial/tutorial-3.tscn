@@ -61,7 +61,7 @@ y_sort_enabled = true
 
 [node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("5_5lgfy")]
 position = Vector2(-203, -75)
-speed = 130.0
+speed = 135.0
 
 [node name="Player" parent="Map/AboveGround" instance=ExtResource("6_bwfch")]
 unique_name_in_owner = true

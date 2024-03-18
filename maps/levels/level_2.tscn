@@ -7,7 +7,5 @@
 [node name="GUI" parent="." index="0"]
 visible = true
 
-[editable path="GUI"]
-[editable path="Map/Ground"]
+[editable path="Map"]
 [editable path="Map/AboveGround"]
-[editable path="Map/NavLayer1"]

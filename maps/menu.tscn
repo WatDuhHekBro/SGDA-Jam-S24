@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://dktdmmne5mr4m"]
+
+[ext_resource type="Script" path="res://maps/menu.gd" id="1_8vl3h"]
+[ext_resource type="Texture2D" uid="uid://bdrlpin3jwvd" path="res://assets/screens/titlescreen/titlescreenA01.png" id="1_g4i1i"]
+[ext_resource type="Texture2D" uid="uid://cq4cdlsn1a3wp" path="res://assets/screens/titlescreen/titlescreenA02.png" id="2_ecsba"]
+[ext_resource type="Texture2D" uid="uid://bcnevt40ovt36" path="res://assets/screens/titlescreen/titlescreenB01.png" id="3_bqtg0"]
+[ext_resource type="Texture2D" uid="uid://cd715gjq55qo4" path="res://assets/screens/titlescreen/titlescreenB02.png" id="4_tfsqd"]
+[ext_resource type="Texture2D" uid="uid://msg24e741xvn" path="res://assets/screens/menu/menu01.png" id="5_0vh0v"]
+[ext_resource type="Texture2D" uid="uid://d2c03eog3omf3" path="res://assets/screens/menu/menu02.png" id="6_katxb"]
+[ext_resource type="Texture2D" uid="uid://dwe3bu5dtncov" path="res://assets/screens/menu/menuTransition01.png" id="7_ya763"]
+[ext_resource type="Texture2D" uid="uid://b3eblovyabngt" path="res://assets/screens/menu/menuTransition02.png" id="8_4qki8"]
+[ext_resource type="Texture2D" uid="uid://b2tgm6mehvv0j" path="res://assets/screens/menu/menuTransition03.png" id="9_mlg7h"]
+[ext_resource type="Texture2D" uid="uid://b2218ew8hjroq" path="res://assets/screens/menu/menuTransition04.png" id="10_p78br"]
+[ext_resource type="Texture2D" uid="uid://cniaubdb23n4b" path="res://assets/screens/menu/menuIcon.png" id="11_evnyx"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vobcn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_0vh0v")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_katxb")
+}],
+"loop": true,
+"name": &"menu",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g4i1i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ecsba")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_bqtg0")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_tfsqd")
+}],
+"loop": true,
+"name": &"title",
+"speed": 2.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_ya763")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_4qki8")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_mlg7h")
+}, {
+"duration": 5.0,
+"texture": ExtResource("10_p78br")
+}],
+"loop": false,
+"name": &"transition",
+"speed": 12.0
+}]
+
+[node name="Menu" type="CanvasLayer"]
+script = ExtResource("1_8vl3h")
+
+[node name="Background" type="AnimatedSprite2D" parent="."]
+position = Vector2(571, 337)
+scale = Vector2(6, 6)
+sprite_frames = SubResource("SpriteFrames_vobcn")
+animation = &"transition"
+autoplay = "title"
+
+[node name="HoverAreas" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Newgame" type="Control" parent="HoverAreas"]
+anchors_preset = 0
+offset_left = 779.0
+offset_top = 317.0
+offset_right = 1045.0
+offset_bottom = 373.0
+
+[node name="Options" type="Control" parent="HoverAreas"]
+anchors_preset = 0
+offset_left = 844.0
+offset_top = 382.0
+offset_right = 1043.0
+offset_bottom = 438.0
+
+[node name="Credits" type="Control" parent="HoverAreas"]
+anchors_preset = 0
+offset_left = 844.0
+offset_top = 448.0
+offset_right = 1042.0
+offset_bottom = 496.0
+
+[node name="Exit" type="Control" parent="HoverAreas"]
+anchors_preset = 0
+offset_left = 930.0
+offset_top = 573.0
+offset_right = 1043.0
+offset_bottom = 624.0
+
+[node name="Cursor" type="TextureRect" parent="."]
+offset_left = 731.0
+offset_top = 317.0
+offset_right = 747.0
+offset_bottom = 333.0
+scale = Vector2(3, 3)
+texture = ExtResource("11_evnyx")
+
+[connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]
+[connection signal="mouse_entered" from="HoverAreas/Newgame" to="." method="_on_newgame_mouse_entered"]
+[connection signal="mouse_entered" from="HoverAreas/Options" to="." method="_on_options_mouse_entered"]
+[connection signal="mouse_entered" from="HoverAreas/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_entered" from="HoverAreas/Exit" to="." method="_on_exit_mouse_entered"]

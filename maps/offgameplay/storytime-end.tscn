@@ -1,8 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4lqvkbpwk1da"]
+[gd_scene load_steps=3 format=3 uid="uid://d4lqvkbpwk1da"]
 
+[ext_resource type="Script" path="res://maps/offgameplay/storytime-end.gd" id="1_v0gox"]
 [ext_resource type="Texture2D" uid="uid://ciro7kgq7rpka" path="res://assets/diary/diary15.png" id="16_dafcr"]
 
 [node name="Storytime" type="Node2D"]
+script = ExtResource("1_v0gox")
 
 [node name="Book" type="Sprite2D" parent="."]
 position = Vector2(582, 337)

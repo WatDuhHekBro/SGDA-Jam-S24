@@ -10,6 +10,8 @@ var book_states_index = 0
 
 func _ready():
 	label.text = BOOK_STATES_TEXT[0]
+	# Play intro theme
+	Global.play_music.emit(420)
 
 
 # Returns true if done flipping pages

@@ -18,6 +18,7 @@ config/icon="res://assets/godot.svg"
 [autoload]
 
 Music="*res://objects/music.tscn"
+Global="*res://objects/utils/global.gd"
 
 [display]
 

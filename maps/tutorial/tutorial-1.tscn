@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c7vqu13f8843w"]
+[gd_scene load_steps=15 format=3 uid="uid://c7vqu13f8843w"]
 
 [ext_resource type="PackedScene" uid="uid://ilkpfn1d7gqh" path="res://objects/gui.tscn" id="1_7uh1b"]
 [ext_resource type="TileSet" uid="uid://bykso8em2wkca" path="res://resources/tilesets/phys-off.tres" id="2_tf7n0"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://do63xl4amjqwy" path="res://objects/enemy.tscn" id="5_htgog"]
 [ext_resource type="PackedScene" uid="uid://7qwoc7r1ih8" path="res://objects/player.tscn" id="6_1lnpi"]
 [ext_resource type="PackedScene" uid="uid://dn65exu2iavkb" path="res://objects/utils/escape-area.tscn" id="7_h4u4p"]
+[ext_resource type="Texture2D" uid="uid://bfs5m5lrkwmrn" path="res://assets/enemies/ghost/ghost02_IdleF01.png" id="7_jd1of"]
+[ext_resource type="Texture2D" uid="uid://r1e42glvf0gt" path="res://assets/enemies/ghost/ghost02_IdleF02.png" id="8_kb2ko"]
+[ext_resource type="Texture2D" uid="uid://c2qp7ag7snerb" path="res://assets/enemies/ghost/ghost01_IdleF01.png" id="9_pvest"]
+[ext_resource type="Texture2D" uid="uid://cqhnydn4e52js" path="res://assets/enemies/ghost/ghost01_IdleF02.png" id="10_hveml"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_rh7lh"]
 vertices = PackedVector2Array(-325, -13, 133, 216, 94, 235, 85, 231, 21, 199, 0, 189, -357, 10, -375, 1, -347, -13, -336, -18, -12, 194, -357, 23, 187, 179, 196, 183, 173, 195, -39, 89, -27, 83, -16, 77, -5, 83, 401, 60, 421, 70, 348, 106, 384, 69, 229, 159, -71, 9, 11, -32, 84, 9, 11, -46, -135, -119, -75, -149, -64, -154, -53, -149, 91, -77, 181, 80, 279, 129, 277, 130, 155, -45, 160, -42, 84, -5, 117, -64, 336, 101, 283, 24, 283, 19, 363, 59, 112, -67, 117, -69, 320, 108, 309, 103, 229, 63, 256, 37, 235, 27, 208, 53, 187, 37, 221, 20, 181, 66, 176, 31, 163, 38, 143, 38, 153, 31, 236, 162, 277, 142, -261, -45, -57, 57, -69, 63, -80, 68, -91, 63, -295, -39, -283, -45, -272, -50, -187, -93, -176, -98, -165, -93, -57, -39, -101, -17, -123, -17, -231, -71, -112, -11)
@@ -14,6 +18,34 @@ polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32
 outlines = Array[PackedVector2Array]([PackedVector2Array(-431, 0, 81, 255, 446, 71, -62, -184)])
 source_geometry_group_name = &"navigation_polygon_source_group"
 agent_radius = 11.0
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d6ro5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("7_jd1of")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_kb2ko")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ru5wc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("9_pvest")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_hveml")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="Tutorial #1" type="Node2D"]
 
@@ -93,6 +125,58 @@ position = Vector2(-231, 63)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/AboveGround/Player"]
 remote_path = NodePath("../../../../Camera2D")
+
+[node name="Ghosts" type="Node2D" parent="Map/AboveGround"]
+y_sort_enabled = true
+position = Vector2(20, 20)
+
+[node name="Ghost24" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-102, 26)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+offset = Vector2(3, 0)
+
+[node name="Ghost11" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-343, -41)
+sprite_frames = SubResource("SpriteFrames_ru5wc")
+autoplay = "default"
+
+[node name="Ghost12" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(126, 2)
+sprite_frames = SubResource("SpriteFrames_ru5wc")
+autoplay = "default"
+
+[node name="Ghost13" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(159, -41)
+sprite_frames = SubResource("SpriteFrames_ru5wc")
+autoplay = "default"
+offset = Vector2(53, 34)
+
+[node name="Ghost20" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-20, -113)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+offset = Vector2(18, -37)
+
+[node name="Ghost21" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-291, -57)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+
+[node name="Ghost22" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(0, -73)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+
+[node name="Ghost23" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-117, -122)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+
+[node name="Ghost23" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts/Ghost23"]
+position = Vector2(194, 151)
+sprite_frames = SubResource("SpriteFrames_d6ro5")
+offset = Vector2(3, 0)
+
+[node name="Ghost14" type="AnimatedSprite2D" parent="Map/AboveGround/Ghosts"]
+position = Vector2(-2, 157)
+sprite_frames = SubResource("SpriteFrames_ru5wc")
+autoplay = "default"
 
 [node name="Layer2" type="TileMap" parent="Map"]
 z_index = 1

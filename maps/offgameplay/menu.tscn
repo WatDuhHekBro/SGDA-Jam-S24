@@ -1,12 +1,13 @@
-[gd_scene load_steps=14 format=3 uid="uid://dktdmmne5mr4m"]
+[gd_scene load_steps=15 format=3 uid="uid://dktdmmne5mr4m"]
 
 [ext_resource type="Script" path="res://maps/offgameplay/menu.gd" id="1_8vl3h"]
 [ext_resource type="Texture2D" uid="uid://bdrlpin3jwvd" path="res://assets/screens/titlescreen/titlescreenA01.png" id="1_g4i1i"]
+[ext_resource type="Texture2D" uid="uid://beanmikalv7f5" path="res://assets/screens/creditsScreen.png" id="2_132f1"]
 [ext_resource type="Texture2D" uid="uid://cq4cdlsn1a3wp" path="res://assets/screens/titlescreen/titlescreenA02.png" id="2_ecsba"]
+[ext_resource type="Texture2D" uid="uid://bw1jdf307eq4j" path="res://assets/screens/menu/menuC01.png" id="2_h6vpb"]
+[ext_resource type="Texture2D" uid="uid://dcm8ip0p0bd3q" path="res://assets/screens/menu/menuC02.png" id="3_4ges4"]
 [ext_resource type="Texture2D" uid="uid://bcnevt40ovt36" path="res://assets/screens/titlescreen/titlescreenB01.png" id="3_bqtg0"]
 [ext_resource type="Texture2D" uid="uid://cd715gjq55qo4" path="res://assets/screens/titlescreen/titlescreenB02.png" id="4_tfsqd"]
-[ext_resource type="Texture2D" uid="uid://msg24e741xvn" path="res://assets/screens/menu/menu01.png" id="5_0vh0v"]
-[ext_resource type="Texture2D" uid="uid://d2c03eog3omf3" path="res://assets/screens/menu/menu02.png" id="6_katxb"]
 [ext_resource type="Texture2D" uid="uid://dwe3bu5dtncov" path="res://assets/screens/menu/menuTransition01.png" id="7_ya763"]
 [ext_resource type="Texture2D" uid="uid://b3eblovyabngt" path="res://assets/screens/menu/menuTransition02.png" id="8_4qki8"]
 [ext_resource type="Texture2D" uid="uid://b2tgm6mehvv0j" path="res://assets/screens/menu/menuTransition03.png" id="9_mlg7h"]
@@ -17,10 +18,10 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("5_0vh0v")
+"texture": ExtResource("2_h6vpb")
 }, {
 "duration": 1.0,
-"texture": ExtResource("6_katxb")
+"texture": ExtResource("3_4ges4")
 }],
 "loop": true,
 "name": &"menu",
@@ -68,8 +69,14 @@ script = ExtResource("1_8vl3h")
 position = Vector2(571, 337)
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_vobcn")
-animation = &"transition"
+animation = &"menu"
 autoplay = "title"
+
+[node name="Credits" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(574, 332)
+scale = Vector2(2.5, 2.5)
+texture = ExtResource("2_132f1")
 
 [node name="HoverAreas" type="Control" parent="."]
 layout_mode = 3
@@ -84,26 +91,19 @@ offset_top = 317.0
 offset_right = 1045.0
 offset_bottom = 373.0
 
-[node name="Options" type="Control" parent="HoverAreas"]
+[node name="Credits" type="Control" parent="HoverAreas"]
 anchors_preset = 0
 offset_left = 844.0
 offset_top = 382.0
 offset_right = 1043.0
 offset_bottom = 438.0
 
-[node name="Credits" type="Control" parent="HoverAreas"]
-anchors_preset = 0
-offset_left = 844.0
-offset_top = 448.0
-offset_right = 1042.0
-offset_bottom = 496.0
-
 [node name="Exit" type="Control" parent="HoverAreas"]
 anchors_preset = 0
-offset_left = 930.0
-offset_top = 573.0
-offset_right = 1043.0
-offset_bottom = 624.0
+offset_left = 935.0
+offset_top = 501.0
+offset_right = 1048.0
+offset_bottom = 552.0
 
 [node name="Cursor" type="TextureRect" parent="."]
 visible = false
@@ -114,8 +114,11 @@ offset_bottom = 333.0
 scale = Vector2(3, 3)
 texture = ExtResource("11_evnyx")
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+
 [connection signal="animation_finished" from="Background" to="." method="_on_background_animation_finished"]
 [connection signal="mouse_entered" from="HoverAreas/Newgame" to="." method="_on_newgame_mouse_entered"]
-[connection signal="mouse_entered" from="HoverAreas/Options" to="." method="_on_options_mouse_entered"]
-[connection signal="mouse_entered" from="HoverAreas/Credits" to="." method="_on_credits_mouse_entered"]
+[connection signal="mouse_entered" from="HoverAreas/Credits" to="." method="_on_options_mouse_entered"]
 [connection signal="mouse_entered" from="HoverAreas/Exit" to="." method="_on_exit_mouse_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

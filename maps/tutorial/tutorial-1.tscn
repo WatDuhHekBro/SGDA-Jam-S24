@@ -67,10 +67,6 @@ refills = 7
 [node name="Enemies" type="Node2D" parent="Map/AboveGround"]
 y_sort_enabled = true
 
-[node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("5_htgog")]
-y_sort_enabled = true
-position = Vector2(-352, -6)
-
 [node name="Enemy2" parent="Map/AboveGround/Enemies" instance=ExtResource("5_htgog")]
 y_sort_enabled = true
 position = Vector2(-271, -44)

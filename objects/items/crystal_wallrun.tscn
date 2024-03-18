@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://073woaqljm8l"]
 
-[ext_resource type="Texture2D" uid="uid://cvgonjr4tdlwn" path="res://assets/miscIcons/cloak.png" id="1_f6nyx"]
+[ext_resource type="Texture2D" uid="uid://dfetwi7s78bee" path="res://assets/items/wallrun.png" id="1_ksx4d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_um65m"]
 size = Vector2(21, 21)
@@ -24,7 +24,7 @@ autostart = true
 [node name="CPUParticles2D" type="CPUParticles2D" parent="."]
 lifetime = 5.0
 draw_order = 1
-texture = ExtResource("1_f6nyx")
+texture = ExtResource("1_ksx4d")
 emission_shape = 1
 emission_sphere_radius = 3.0
 gravity = Vector2(0, 0)

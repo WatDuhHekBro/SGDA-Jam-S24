@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=20 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
 [ext_resource type="Texture2D" uid="uid://d0jmwswenfkey" path="res://assets/ghost/dust.png" id="2_cv8qm"]
@@ -58,6 +58,10 @@ radius = 9.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_l8kc3"]
 radius = 8.0
+
+[sub_resource type="Gradient" id="Gradient_do5ys"]
+offsets = PackedFloat32Array(0.025974, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [node name="Player" type="CharacterBody2D"]
 y_sort_enabled = true
@@ -138,6 +142,16 @@ stream = ExtResource("10_aqk0e")
 [node name="ChangeDirectionSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("11_osuos")
 volume_db = 10.0
+
+[node name="Shadow" type="CPUParticles2D" parent="."]
+position = Vector2(0, -10)
+emitting = false
+lifetime = 2.0
+one_shot = true
+draw_order = 1
+texture = ExtResource("5_o5lrb")
+gravity = Vector2(0, 0)
+color_ramp = SubResource("Gradient_do5ys")
 
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

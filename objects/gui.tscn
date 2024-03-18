@@ -1,12 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://ilkpfn1d7gqh"]
+[gd_scene load_steps=16 format=3 uid="uid://ilkpfn1d7gqh"]
 
 [ext_resource type="Script" path="res://objects/gui.gd" id="1_oonh8"]
-[ext_resource type="Texture2D" uid="uid://bot3alnu2m04x" path="res://assets/items/ui/wallphase-ui.png" id="2_dsotn"]
 [ext_resource type="Texture2D" uid="uid://2jqginrb46mj" path="res://assets/items/ui/wallrun-off.png" id="2_mn8rw"]
 [ext_resource type="Texture2D" uid="uid://cn376730lukqa" path="res://assets/items/ui/timejump-on.png" id="2_qcqev"]
+[ext_resource type="Texture2D" uid="uid://dbckl7k5s4fyr" path="res://assets/miscIcons/dash.png" id="3_4iagx"]
 [ext_resource type="Texture2D" uid="uid://bgum0x6rk3ey6" path="res://assets/items/ui/wallrun-on.png" id="3_h0tk8"]
 [ext_resource type="Texture2D" uid="uid://do32xsxk7yc57" path="res://assets/items/ui/wallphase-ui-count.png" id="3_qc8h8"]
 [ext_resource type="Texture2D" uid="uid://bihl7b6hrpric" path="res://assets/items/ui/timejump-off.png" id="4_1t6bh"]
+[ext_resource type="FontFile" uid="uid://jyg3gyrotrs3" path="res://assets/font/abaddon-bold.ttf" id="4_sus7m"]
 [ext_resource type="Texture2D" uid="uid://b607s6wlehb3v" path="res://assets/screens/losescreen/losescreen.png" id="8_nkfqs"]
 [ext_resource type="Texture2D" uid="uid://cwenibgb7kffh" path="res://assets/xelu-controller-prompts/kbm/Mouse_Left_Key_Dark.png" id="8_pa0jb"]
 [ext_resource type="Texture2D" uid="uid://t88jifxc2yck" path="res://assets/xelu-controller-prompts/kbm/Mouse_Right_Key_Dark.png" id="9_k5mij"]
@@ -23,10 +24,10 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 5.0
-offset_top = 5.0
-offset_right = 5.0
-offset_bottom = 5.0
+offset_left = -75.0
+offset_top = 1.0
+offset_right = -75.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(2, 2)
@@ -36,12 +37,6 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="TextureRect" type="TextureRect" parent="Hotbar/Wallphase"]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
-texture = ExtResource("2_dsotn")
-
 [node name="TextureRect2" type="TextureRect" parent="Hotbar/Wallphase"]
 layout_mode = 0
 offset_left = 40.0
@@ -49,14 +44,25 @@ offset_right = 80.0
 offset_bottom = 40.0
 texture = ExtResource("3_qc8h8")
 
+[node name="TextureRect" type="TextureRect" parent="Hotbar/Wallphase/TextureRect2"]
+layout_mode = 0
+offset_left = 7.5
+offset_top = 20.5
+offset_right = 47.5
+offset_bottom = 60.5
+scale = Vector2(0.573793, 0.479512)
+texture = ExtResource("3_4iagx")
+
 [node name="Label" type="Label" parent="Hotbar/Wallphase"]
 layout_mode = 0
 offset_left = 40.0
-offset_top = 3.0
+offset_top = -15.5
 offset_right = 59.0
-offset_bottom = 23.0
-scale = Vector2(2, 2)
+offset_bottom = 7.5
+scale = Vector2(1.95916, 2.50649)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("4_sus7m")
+theme_override_font_sizes/font_size = 8
 text = "69"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -103,8 +109,10 @@ texture = ExtResource("2_qcqev")
 [node name="HotbarHelpers" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = -80.0
+offset_top = -4.0
+offset_right = -40.0
+offset_bottom = 36.0
 scale = Vector2(0.5, 0.5)
 
 [node name="KBM-Wallphase" type="TextureRect" parent="HotbarHelpers"]

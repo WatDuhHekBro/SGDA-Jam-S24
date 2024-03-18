@@ -70,6 +70,7 @@ func _physics_process(_delta):
 			timer_wallphase_timeout.start()
 		
 		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0 && !is_currently_wallphasing && !is_currently_wallrunning:
+			$Shadow.emitting = true
 			wallphase2_sfx.play()
 			stored_position_x = position.x
 			stored_position_y = position.y
@@ -139,6 +140,7 @@ func _on_timer_wallphase_timeout_timeout():
 	collision.set_deferred("disabled", false)
 	is_currently_wallphasing = false
 	is_currently_wallrunning = false
+	$Shadow.emitting = false
 	print("wallphase safety cancel")
 
 
@@ -162,6 +164,5 @@ func _on_pickup_entered(area):
 
 
 func kill():
-	$PlayerKilledSFX.play()
 	queue_free()
 	gui.set_gameover(true)

@@ -186,7 +186,7 @@ animations = [{
 radius = 7.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g4fck"]
-radius = 164.514
+radius = 170.0
 
 [sub_resource type="Curve" id="Curve_ndoq0"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.0879121, 0.384615), -3.05263, -3.05263, 0, 0, Vector2(0.313187, 0.032967), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -205,6 +205,7 @@ point_count = 2
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_hxnli")
+speed = 100.0
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0

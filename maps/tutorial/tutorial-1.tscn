@@ -135,10 +135,11 @@ BREAK THE MOLD!"
 
 [node name="LabelEscape" type="Label" parent="."]
 z_index = 3
-offset_left = -112.0
-offset_top = -220.0
-offset_right = -65.0
-offset_bottom = -202.0
+offset_left = -177.0
+offset_top = -218.0
+offset_right = -61.0
+offset_bottom = -200.0
 scale = Vector2(2, 2)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-text = "Escape!"
+text = "Touch to Escape!
+"

@@ -1,117 +1,22 @@
-[gd_scene load_steps=18 format=3 uid="uid://d4lqvkbpwk1da"]
+[gd_scene load_steps=2 format=3 uid="uid://d4lqvkbpwk1da"]
 
-[ext_resource type="Script" path="res://maps/offgameplay/storytime-end.gd" id="1_73iyg"]
-[ext_resource type="Texture2D" uid="uid://di4xam6ihbybh" path="res://assets/diary/diary01.png" id="2_tdrex"]
-[ext_resource type="Texture2D" uid="uid://dytretd5k5yw3" path="res://assets/diary/diary02.png" id="3_ybadt"]
-[ext_resource type="Texture2D" uid="uid://doky5r1sjs4ta" path="res://assets/diary/diary03.png" id="4_2c28e"]
-[ext_resource type="Texture2D" uid="uid://c4pqvcgvk6vf1" path="res://assets/diary/diary04.png" id="5_l0jl7"]
-[ext_resource type="Texture2D" uid="uid://b1bwskr7l48r7" path="res://assets/diary/diary05.png" id="6_kd8rt"]
-[ext_resource type="Texture2D" uid="uid://rfqve4hdmpit" path="res://assets/diary/diary06.png" id="7_4ip4g"]
-[ext_resource type="Texture2D" uid="uid://06mpxxlnajl0" path="res://assets/diary/diary07.png" id="8_sghfi"]
-[ext_resource type="Texture2D" uid="uid://cqplco363uh60" path="res://assets/diary/diary08.png" id="9_xm7n5"]
-[ext_resource type="Texture2D" uid="uid://duhwra2yub0v" path="res://assets/diary/diary09.png" id="10_da8nw"]
-[ext_resource type="Texture2D" uid="uid://ceqldmbk6wwjv" path="res://assets/diary/diary10.png" id="11_n57rb"]
-[ext_resource type="Texture2D" uid="uid://dxe8cc1u6lqow" path="res://assets/diary/diary11.png" id="12_e1n3o"]
-[ext_resource type="Texture2D" uid="uid://c30thhtv6nnk8" path="res://assets/diary/diary12.png" id="13_xlyo7"]
-[ext_resource type="Texture2D" uid="uid://b33im8ruoqqxh" path="res://assets/diary/diary13.png" id="14_5n55q"]
-[ext_resource type="Texture2D" uid="uid://b1u6fsk2kfh0s" path="res://assets/diary/diary14.png" id="15_45vd4"]
 [ext_resource type="Texture2D" uid="uid://ciro7kgq7rpka" path="res://assets/diary/diary15.png" id="16_dafcr"]
 
-[sub_resource type="SpriteFrames" id="SpriteFrames_8uc1b"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_tdrex")
-}],
-"loop": true,
-"name": &"page1",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("2_tdrex")
-}, {
-"duration": 1.0,
-"texture": ExtResource("3_ybadt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("4_2c28e")
-}, {
-"duration": 1.0,
-"texture": ExtResource("5_l0jl7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("6_kd8rt")
-}, {
-"duration": 1.0,
-"texture": ExtResource("7_4ip4g")
-}, {
-"duration": 1.0,
-"texture": ExtResource("8_sghfi")
-}, {
-"duration": 1.0,
-"texture": ExtResource("9_xm7n5")
-}],
-"loop": false,
-"name": &"turn1to2",
-"speed": 12.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("9_xm7n5")
-}, {
-"duration": 1.0,
-"texture": ExtResource("10_da8nw")
-}, {
-"duration": 1.0,
-"texture": ExtResource("11_n57rb")
-}, {
-"duration": 1.0,
-"texture": ExtResource("12_e1n3o")
-}, {
-"duration": 1.0,
-"texture": ExtResource("13_xlyo7")
-}, {
-"duration": 1.0,
-"texture": ExtResource("14_5n55q")
-}, {
-"duration": 1.0,
-"texture": ExtResource("15_45vd4")
-}, {
-"duration": 1.0,
-"texture": ExtResource("16_dafcr")
-}],
-"loop": false,
-"name": &"turn2to3",
-"speed": 12.0
-}]
-
 [node name="Storytime" type="Node2D"]
-script = ExtResource("1_73iyg")
 
-[node name="Book" type="AnimatedSprite2D" parent="."]
-position = Vector2(580, 318)
-scale = Vector2(5, 5)
-sprite_frames = SubResource("SpriteFrames_8uc1b")
-animation = &"page1"
-autoplay = "page1"
-
-[node name="Label" type="Label" parent="."]
-offset_left = 177.0
-offset_top = 459.0
-offset_right = 584.0
-offset_bottom = 501.0
-scale = Vector2(2, 2)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
-text = "This is some sample text asdf onaef pwopijef ponqoinwe opijqpojiwe fojiwpoijef oijweoijf owijef!"
-autowrap_mode = 3
-visible_characters = 0
-visible_ratio = 0.0
+[node name="Book" type="Sprite2D" parent="."]
+texture = ExtResource("16_dafcr")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
 
-[connection signal="animation_finished" from="Book" to="." method="_on_book_animation_finished"]
+[node name="Label" type="Label" parent="."]
+offset_left = -28.0
+offset_top = -48.0
+offset_right = 27.0
+offset_bottom = -30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "THE END"
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

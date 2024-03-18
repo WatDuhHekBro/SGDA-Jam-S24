@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ilkpfn1d7gqh"]
+[gd_scene load_steps=18 format=3 uid="uid://ilkpfn1d7gqh"]
 
 [ext_resource type="Script" path="res://objects/gui.gd" id="1_oonh8"]
 [ext_resource type="Texture2D" uid="uid://2jqginrb46mj" path="res://assets/items/ui/wallrun-off.png" id="2_mn8rw"]
@@ -15,6 +15,8 @@
 [ext_resource type="Texture2D" uid="uid://ylxc5y1ewma4" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_B.png" id="11_mb656"]
 [ext_resource type="Texture2D" uid="uid://b8pyo5b3vsaq1" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_A.png" id="12_sbjmv"]
 [ext_resource type="Texture2D" uid="uid://7rqgdbel8mdy" path="res://assets/xelu-controller-prompts/xbox/XboxSeriesX_X.png" id="13_6v6tg"]
+[ext_resource type="Texture2D" uid="uid://gwmhimrramnn" path="res://assets/screens/pause.png" id="16_x4dcb"]
+[ext_resource type="Texture2D" uid="uid://bcxd8ysyk8kpt" path="res://assets/screens/pause_screen.png" id="17_mtp3m"]
 
 [node name="GUIContainer" type="CanvasLayer"]
 script = ExtResource("1_oonh8")
@@ -178,3 +180,54 @@ offset_right = 186.0
 offset_bottom = 69.0
 scale = Vector2(6, 6)
 texture = ExtResource("8_nkfqs")
+
+[node name="PauseButton" type="Button" parent="."]
+offset_left = 1002.0
+offset_top = 16.0
+offset_right = 1042.0
+offset_bottom = 56.0
+scale = Vector2(2.92098, 2.89706)
+icon = ExtResource("16_x4dcb")
+
+[node name="PausedGame" type="Control" parent="."]
+visible = false
+self_modulate = Color(1, 1, 1, 0.168627)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PauseMenu" type="TextureRect" parent="PausedGame"]
+layout_mode = 0
+offset_left = -41.0
+offset_top = -30.0
+offset_right = 154.0
+offset_bottom = 96.0
+scale = Vector2(6.32, 5.64)
+texture = ExtResource("17_mtp3m")
+
+[node name="Resume" type="Button" parent="PausedGame"]
+process_mode = 3
+modulate = Color(0, 0, 0, 0)
+layout_mode = 0
+offset_left = 383.0
+offset_top = 346.0
+offset_right = 391.0
+offset_bottom = 354.0
+scale = Vector2(52.1099, 10.7602)
+
+[node name="MainMenu" type="Button" parent="PausedGame"]
+process_mode = 3
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 279.0
+offset_top = 456.0
+offset_right = 287.0
+offset_bottom = 464.0
+scale = Vector2(76.0397, 11.1781)
+
+[connection signal="pressed" from="PauseButton" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="PausedGame/Resume" to="." method="_on_resume_pressed"]
+[connection signal="pressed" from="PausedGame/MainMenu" to="." method="_on_main_menu_pressed"]

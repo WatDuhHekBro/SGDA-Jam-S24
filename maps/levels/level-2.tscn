@@ -110,7 +110,7 @@ y_sort_enabled = true
 y_sort_enabled = true
 
 [node name="CrystalWallrun" parent="Map/AboveGround/Objects" instance=ExtResource("4_wuici")]
-position = Vector2(-502, 66)
+position = Vector2(-444, 110)
 
 [node name="CrystalWallphase" parent="Map/AboveGround/Objects" instance=ExtResource("5_uhllw")]
 position = Vector2(-20, 11)
@@ -248,12 +248,12 @@ autoplay = "default"
 offset = Vector2(53, 34)
 
 [node name="Ghost20" type="AnimatedSprite2D" parent="Ghosts"]
-position = Vector2(-20, -113)
+position = Vector2(57, -85)
 sprite_frames = SubResource("SpriteFrames_t5xsb")
 offset = Vector2(18, -37)
 
 [node name="Ghost21" type="AnimatedSprite2D" parent="Ghosts"]
-position = Vector2(125, -85)
+position = Vector2(202, -57)
 sprite_frames = SubResource("SpriteFrames_t5xsb")
 
 [node name="Ghost21" type="AnimatedSprite2D" parent="Ghosts/Ghost21"]

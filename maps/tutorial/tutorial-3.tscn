@@ -89,20 +89,19 @@ y_sort_enabled = true
 [node name="CrystalTimejump" parent="Map/AboveGround/Objects" instance=ExtResource("4_ldgha")]
 position = Vector2(-89, 81)
 
+[node name="Player" parent="Map/AboveGround" instance=ExtResource("6_bwfch")]
+unique_name_in_owner = true
+position = Vector2(-11, 131)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/AboveGround/Player"]
+remote_path = NodePath("../../../../Camera2D")
+
 [node name="Enemies" type="Node2D" parent="Map/AboveGround"]
 y_sort_enabled = true
 
 [node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("5_5lgfy")]
 position = Vector2(-190, -65)
 speed = 110.0
-
-[node name="Player" parent="Map/AboveGround" instance=ExtResource("6_bwfch")]
-unique_name_in_owner = true
-z_index = 1
-position = Vector2(-11, 131)
-
-[node name="RemoteTransform2D" type="RemoteTransform2D" parent="Map/AboveGround/Player"]
-remote_path = NodePath("../../../../Camera2D")
 
 [node name="Ghosts" type="Node2D" parent="Map/AboveGround"]
 y_sort_enabled = true

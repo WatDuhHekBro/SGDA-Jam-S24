@@ -5,6 +5,8 @@
 [node name="Storytime" type="Node2D"]
 
 [node name="Book" type="Sprite2D" parent="."]
+position = Vector2(582, 337)
+scale = Vector2(4.72645, 4.51926)
 texture = ExtResource("16_dafcr")
 
 [node name="Timer" type="Timer" parent="."]
@@ -12,10 +14,11 @@ wait_time = 0.05
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = -28.0
-offset_top = -48.0
-offset_right = 27.0
-offset_bottom = -30.0
+offset_left = 427.0
+offset_top = 109.0
+offset_right = 482.0
+offset_bottom = 127.0
+scale = Vector2(5.71732, 7.15532)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "THE END"
 

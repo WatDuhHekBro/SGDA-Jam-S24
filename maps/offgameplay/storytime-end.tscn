@@ -1,10 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://d4lqvkbpwk1da"]
+[gd_scene load_steps=3 format=3 uid="uid://d4lqvkbpwk1da"]
 
+[ext_resource type="FontFile" uid="uid://jyg3gyrotrs3" path="res://assets/font/abaddon-bold.ttf" id="2_v3qp8"]
 [ext_resource type="Texture2D" uid="uid://ciro7kgq7rpka" path="res://assets/diary/diary15.png" id="16_dafcr"]
 
 [node name="Storytime" type="Node2D"]
 
 [node name="Book" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(5, 5)
 texture = ExtResource("16_dafcr")
 
 [node name="Timer" type="Timer" parent="."]
@@ -12,11 +15,14 @@ wait_time = 0.05
 autostart = true
 
 [node name="Label" type="Label" parent="."]
-offset_left = -28.0
-offset_top = -48.0
-offset_right = 27.0
-offset_bottom = -30.0
+offset_left = 436.0
+offset_top = 65.0
+offset_right = 504.0
+offset_bottom = 88.0
+scale = Vector2(5, 5)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_shadow_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_v3qp8")
 text = "THE END"
 
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

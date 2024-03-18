@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dfyrp54ftmerh"]
+[gd_scene load_steps=19 format=3 uid="uid://dfyrp54ftmerh"]
 
 [ext_resource type="Script" path="res://maps/offgameplay/storytime.gd" id="1_kwwna"]
 [ext_resource type="Texture2D" uid="uid://di4xam6ihbybh" path="res://assets/diary/diary01.png" id="1_obwkr"]
@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://c30thhtv6nnk8" path="res://assets/diary/diary12.png" id="13_7il3y"]
 [ext_resource type="Texture2D" uid="uid://b33im8ruoqqxh" path="res://assets/diary/diary13.png" id="14_htkun"]
 [ext_resource type="Texture2D" uid="uid://b1u6fsk2kfh0s" path="res://assets/diary/diary14.png" id="15_gemlf"]
+[ext_resource type="AudioStream" uid="uid://b0c2e2kg3owdr" path="res://assets/music/sfx/pageturn.mp3" id="17_eo3t2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_8uc1b"]
 animations = [{
@@ -132,6 +133,9 @@ visible_ratio = 0.0
 [node name="CharacterSpeed" type="Timer" parent="."]
 wait_time = 0.05
 autostart = true
+
+[node name="PageTurnSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("17_eo3t2")
 
 [connection signal="animation_finished" from="Book" to="." method="_on_book_animation_finished"]
 [connection signal="timeout" from="CharacterSpeed" to="." method="_on_timer_timeout"]

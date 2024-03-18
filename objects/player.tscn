@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=19 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
 [ext_resource type="Texture2D" uid="uid://d0jmwswenfkey" path="res://assets/ghost/dust.png" id="2_cv8qm"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://b8xflrvf4cxy2" path="res://assets/ghost/ghost_IdleBL02.png" id="4_kmy6e"]
 [ext_resource type="Texture2D" uid="uid://cyweu88fokrb2" path="res://assets/ghost/ghost_Idle01.png" id="5_o5lrb"]
 [ext_resource type="Texture2D" uid="uid://doma1rs1bhipv" path="res://assets/ghost/ghost_Idle02.png" id="6_gwxa7"]
+[ext_resource type="AudioStream" uid="uid://jdsv4v4ywcci" path="res://assets/music/sfx/wallphase0.wav" id="7_vvo4s"]
+[ext_resource type="AudioStream" uid="uid://n47wgj02jyxq" path="res://assets/music/sfx/wallphase1.wav" id="8_vls1l"]
+[ext_resource type="AudioStream" uid="uid://1uwi2unbhjyt" path="res://assets/music/sfx/wallphase2.wav" id="9_nky0e"]
+[ext_resource type="AudioStream" uid="uid://c5o46v0xgntbf" path="res://assets/music/sfx/player_killed.wav" id="10_aqk0e"]
+[ext_resource type="AudioStream" uid="uid://bkphruq7n4x21" path="res://assets/music/sfx/cloud-poof.mp3" id="11_osuos"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g6krc"]
 particles_animation = true
@@ -117,6 +122,22 @@ shape = SubResource("CircleShape2D_l8kc3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(2, 2)
+
+[node name="Wallphase0SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("7_vvo4s")
+
+[node name="Wallphase1SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("8_vls1l")
+
+[node name="Wallphase2SFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("9_nky0e")
+
+[node name="PlayerKilledSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_aqk0e")
+
+[node name="ChangeDirectionSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("11_osuos")
+volume_db = 10.0
 
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

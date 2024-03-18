@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://p5tdprio6xg"
-path="res://.godot/imported/lost_power.wav-055a5c8628fea14915b1e098820ac544.sample"
+path="res://.godot/imported/lost_power.wav-8fcf687fdb0d8f90e7073e66d35edb43.sample"
 
 [deps]
 
-source_file="res://assets/sfx/lost_power.wav"
-dest_files=["res://.godot/imported/lost_power.wav-055a5c8628fea14915b1e098820ac544.sample"]
+source_file="res://assets/music/sfx/lost_power.wav"
+dest_files=["res://.godot/imported/lost_power.wav-8fcf687fdb0d8f90e7073e66d35edb43.sample"]
 
 [params]
 

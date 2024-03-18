@@ -23,8 +23,14 @@ var is_currently_wallrunning = false
 @onready var timer_wallphase_timeout = $TimerWallphaseTimeout
 @onready var collision = $CollisionShape2D
 @onready var gui = %GUI
+@onready var change_direction_sfx = $ChangeDirectionSFX
+@onready var wallphase0_sfx = $Wallphase0SFX
+@onready var wallphase1_sfx = $Wallphase1SFX
+@onready var wallphase2_sfx = $Wallphase2SFX
+@onready var player_killed_sfx = $PlayerKilledSFX
 var stored_position_x = 0
 var stored_position_y = 0
+var last_input = Vector2(0, 0)
 
 
 func _ready():
@@ -52,16 +58,19 @@ func _physics_process(_delta):
 
 		# Abilities/Actions
 		if wallphase_count > 0 && Input.is_action_just_released("action-wallphase"):
+			wallphase0_sfx.play()
 			is_currently_wallphasing = true
 			wallphase_count -= 1
 			timer_wallphase_timeout.start()
 		
 		if can_wallrun && Input.is_action_just_released("action-wallrun"):
+			wallphase1_sfx.play()
 			is_currently_wallrunning = true
 			can_wallrun = false
 			timer_wallphase_timeout.start()
 		
 		if can_timejump && Input.is_action_just_released("action-timejump") && timer_timejump.time_left <= 0 && !is_currently_wallphasing && !is_currently_wallrunning:
+			wallphase2_sfx.play()
 			stored_position_x = position.x
 			stored_position_y = position.y
 			timer_timejump.start()
@@ -71,12 +80,17 @@ func _physics_process(_delta):
 	
 	move_and_slide()
 
+func close_enough_vectors(a: Vector2, b: Vector2, epsilon) -> bool:
+	return abs(a.x - b.x) < epsilon && abs(a.y - b.y) < epsilon
+
 func check_animation():
 	var dotted = velocity.dot(DirUtils.direction_to_vector(DirUtils.Directions.UP))
+	
 	if dotted > 0:
 		$AnimatedSprite2D.play("forward")
 	elif dotted < 0:
 		$AnimatedSprite2D.play("backward")
+
 
 	if velocity.x > 0:
 		$AnimatedSprite2D.flip_h = true
@@ -148,5 +162,6 @@ func _on_pickup_entered(area):
 
 
 func kill():
+	$PlayerKilledSFX.play()
 	queue_free()
 	gui.set_gameover(true)

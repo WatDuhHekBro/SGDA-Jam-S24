@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://do63xl4amjqwy"]
+[gd_scene load_steps=41 format=3 uid="uid://do63xl4amjqwy"]
 
 [ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
 [ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_4n3h6"]
@@ -26,6 +26,8 @@
 [ext_resource type="Texture2D" uid="uid://eba4xlcg0r82" path="res://assets/enemies/villager/villager06_IdleF01.png" id="22_od3b7"]
 [ext_resource type="Texture2D" uid="uid://c2a5vtc0wqi2v" path="res://assets/enemies/villager/villager06_IdleF02.png" id="23_1o6pj"]
 [ext_resource type="Texture2D" uid="uid://b71xpw3wixx8i" path="res://assets/miscIcons/warning.png" id="26_buoup"]
+[ext_resource type="AudioStream" uid="uid://ck41me18uiwl0" path="res://assets/music/sfx/player_spotted.wav" id="27_40n4f"]
+[ext_resource type="AudioStream" uid="uid://c5o46v0xgntbf" path="res://assets/music/sfx/player_killed.wav" id="28_vt61t"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
 radius = 7.0
@@ -280,6 +282,12 @@ color_ramp = SubResource("Gradient_e345b")
 hue_variation_min = 0.06
 hue_variation_max = 0.06
 hue_variation_curve = SubResource("Curve_qc3ny")
+
+[node name="PlayerSpottedSFX" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("27_40n4f")
+
+[node name="PlayerKilledSFX" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("28_vt61t")
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]

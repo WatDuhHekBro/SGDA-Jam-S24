@@ -5,10 +5,12 @@ const DirUtils = preload("res://objects/utils/directions.gd")
 @export var speed: float = 120.0
 @export var is_aggressive = false
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
-@onready var target = %Player
-@onready var anim
+@onready var target = $%Player
+@onready var player_spotted_sfx = $PlayerSpottedSFX
+var anim
 var is_seeking = false
 var target_last_seen;
+var lost_sight = true;
 
 func _ready() -> void:
 	nav.velocity_computed.connect(Callable(_on_velocity_computed))
@@ -38,6 +40,7 @@ func _physics_process(_delta):
 
 	if nav.is_navigation_finished() && $ReactionTime.time_left == 0:
 		$PlayerDetected.visible = false
+		lost_sight = true
 		_on_velocity_computed(Vector2(0, 0))
 		return;
 	
@@ -62,7 +65,10 @@ func _on_velocity_computed(safe_velocity: Vector2):
 
 func _on_player_entered(body):
 	if is_line_of_sight():
+		if lost_sight:
+			player_spotted_sfx.play()
 		target_last_seen = target.global_position
+		lost_sight = false
 		$PlayerDetected.visible = true
 		$ReactionTime.start()
 
@@ -70,6 +76,7 @@ func _on_player_exited(body):
 	is_seeking = false
 
 func _on_kill_player_entered(body: Node2D):
+	$PlayerKilledSFX.play()
 	$%Player.kill()
 
 func check_animation():

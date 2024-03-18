@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://jdsv4v4ywcci"
-path="res://.godot/imported/wallphase0.wav-80ac5ad0056db763a4ff08a7f416f927.sample"
+path="res://.godot/imported/wallphase0.wav-59d8aa03c6652fad0b66b4512ad30096.sample"
 
 [deps]
 
-source_file="res://assets/sfx/wallphase0.wav"
-dest_files=["res://.godot/imported/wallphase0.wav-80ac5ad0056db763a4ff08a7f416f927.sample"]
+source_file="res://assets/music/sfx/wallphase0.wav"
+dest_files=["res://.godot/imported/wallphase0.wav-59d8aa03c6652fad0b66b4512ad30096.sample"]
 
 [params]
 

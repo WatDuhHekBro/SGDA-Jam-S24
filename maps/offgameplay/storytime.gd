@@ -27,6 +27,7 @@ func flip_page():
 
 	# Progress between states
 	if book_states_index < BOOK_STATES.size():
+		$PageTurnSFX.play()
 		var state = BOOK_STATES[book_states_index]
 		book_states_index += 1
 		book.play(state)

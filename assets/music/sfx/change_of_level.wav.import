@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dgxnohw35j24q"
-path="res://.godot/imported/change_of_level.wav-8e7f1d23e65581dee62b43bfaa990b56.sample"
+path="res://.godot/imported/change_of_level.wav-2672c9869b62b2b3bc11b74162bbe304.sample"
 
 [deps]
 
-source_file="res://assets/sfx/change_of_level.wav"
-dest_files=["res://.godot/imported/change_of_level.wav-8e7f1d23e65581dee62b43bfaa990b56.sample"]
+source_file="res://assets/music/sfx/change_of_level.wav"
+dest_files=["res://.godot/imported/change_of_level.wav-2672c9869b62b2b3bc11b74162bbe304.sample"]
 
 [params]
 

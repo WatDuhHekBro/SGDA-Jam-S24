@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://bgum0x6rk3ey6" path="res://assets/items/ui/wallrun-on.png" id="3_h0tk8"]
 [ext_resource type="Texture2D" uid="uid://do32xsxk7yc57" path="res://assets/items/ui/wallphase-ui-count.png" id="3_qc8h8"]
 [ext_resource type="Texture2D" uid="uid://bihl7b6hrpric" path="res://assets/items/ui/timejump-off.png" id="4_1t6bh"]
-[ext_resource type="FontFile" uid="uid://jyg3gyrotrs3" path="res://assets/font/abaddon-bold.ttf" id="4_sus7m"]
 [ext_resource type="Texture2D" uid="uid://b607s6wlehb3v" path="res://assets/screens/losescreen/losescreen.png" id="8_nkfqs"]
 [ext_resource type="Texture2D" uid="uid://cwenibgb7kffh" path="res://assets/xelu-controller-prompts/kbm/Mouse_Left_Key_Dark.png" id="8_pa0jb"]
 [ext_resource type="Texture2D" uid="uid://t88jifxc2yck" path="res://assets/xelu-controller-prompts/kbm/Mouse_Right_Key_Dark.png" id="9_k5mij"]
@@ -57,18 +56,13 @@ texture = ExtResource("3_4iagx")
 
 [node name="Label" type="Label" parent="Hotbar/Wallphase"]
 layout_mode = 0
-offset_left = 40.0
-offset_top = -15.5
-offset_right = 59.0
-offset_bottom = 7.5
-scale = Vector2(1.95916, 2.50649)
+offset_left = 53.5
+offset_top = 2.0
+offset_right = 93.5
+offset_bottom = 25.0
+scale = Vector2(1.5, 1.5)
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("4_sus7m")
-theme_override_font_sizes/font_size = 8
 text = "69"
-horizontal_alignment = 1
-vertical_alignment = 1
-clip_text = true
 
 [node name="Wallrun" type="Control" parent="Hotbar"]
 anchors_preset = 0

@@ -100,8 +100,8 @@ remote_path = NodePath("../../../../Camera2D")
 y_sort_enabled = true
 
 [node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("5_5lgfy")]
-position = Vector2(-190, -65)
-speed = 110.0
+position = Vector2(-223, -32)
+speed = 130.0
 
 [node name="Ghosts" type="Node2D" parent="Map/AboveGround"]
 y_sort_enabled = true

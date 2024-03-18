@@ -1,6 +1,7 @@
-[gd_scene load_steps=15 format=3 uid="uid://c7vqu13f8843w"]
+[gd_scene load_steps=16 format=3 uid="uid://c7vqu13f8843w"]
 
 [ext_resource type="PackedScene" uid="uid://ilkpfn1d7gqh" path="res://objects/gui.tscn" id="1_7uh1b"]
+[ext_resource type="Script" path="res://maps/tutorial/tutorial-1.gd" id="1_jt1rt"]
 [ext_resource type="TileSet" uid="uid://bykso8em2wkca" path="res://resources/tilesets/phys-off.tres" id="2_tf7n0"]
 [ext_resource type="TileSet" uid="uid://bhc0hslnx0myh" path="res://resources/tilesets/phys-on.tres" id="3_c80je"]
 [ext_resource type="PackedScene" uid="uid://dus1nai686kk8" path="res://objects/items/crystal_wallphase.tscn" id="4_m3n8y"]
@@ -48,6 +49,7 @@ animations = [{
 }]
 
 [node name="Tutorial #1" type="Node2D"]
+script = ExtResource("1_jt1rt")
 
 [node name="GUI" parent="." instance=ExtResource("1_7uh1b")]
 unique_name_in_owner = true

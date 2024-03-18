@@ -120,7 +120,7 @@ refills = 5
 position = Vector2(-410, -76)
 
 [node name="CrystalWallrun2" parent="Map/AboveGround/Objects" instance=ExtResource("4_wuici")]
-position = Vector2(-215, -183)
+position = Vector2(86, -170)
 
 [node name="Enemies" type="Node2D" parent="Map/AboveGround"]
 y_sort_enabled = true

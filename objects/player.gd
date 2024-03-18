@@ -39,7 +39,9 @@ func _ready():
 
 
 func _physics_process(_delta):
-	if is_currently_wallphasing || is_currently_wallrunning:
+	if Input.is_action_just_released("menu-reset-level"):
+		kill()
+	elif is_currently_wallphasing || is_currently_wallrunning:
 		collision.set_deferred("disabled", true)
 		
 		for dir in DirUtils.DIRECTIONS :

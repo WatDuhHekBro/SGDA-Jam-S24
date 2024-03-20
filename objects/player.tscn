@@ -125,7 +125,7 @@ position = Vector2(5.89589e-08, -1.3845e-07)
 shape = SubResource("CircleShape2D_l8kc3")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(2, 2)
+zoom = Vector2(3, 3)
 
 [node name="Wallphase0SFX" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("7_vvo4s")

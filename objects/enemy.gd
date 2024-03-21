@@ -2,8 +2,9 @@ extends CharacterBody2D
 
 const DirUtils = preload("res://objects/utils/directions.gd")
 
-@export var speed: float = 80.0
+@export var desired_speed: float = 80.0
 @export var acceleration: float = 12.0
+@export var focus_acceleration: float = 12.0
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var target = $%Player
 @onready var player_spotted_sfx = $PlayerSpottedSFX
@@ -45,10 +46,12 @@ func _physics_process(_delta):
 		return;
 	
 	if not nav.is_navigation_finished() || not lost_sight:
-		var next = to_local(nav.get_next_path_position())
-		var desired_velocity = velocity + next.normalized() * acceleration
-		desired_velocity = desired_velocity.limit_length(speed)
-		velocity = desired_velocity
+		var next = to_local(nav.get_next_path_position()).normalized()
+		var focus_coeff = sin(abs(next.angle_to(velocity)))
+		print(focus_coeff)
+		var turnign_velocity = next * focus_acceleration * focus_coeff
+		var next_velocity = velocity + next * acceleration + turnign_velocity
+		velocity = next_velocity.limit_length(desired_speed)
 	
 	move_and_slide()
 

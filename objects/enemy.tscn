@@ -205,11 +205,8 @@ point_count = 2
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_hxnli")
-speed = 60.0
-
-[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
-path_desired_distance = 1.0
-target_desired_distance = 5.0
+desired_speed = 120.0
+acceleration = 3.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e4w5n")
@@ -288,6 +285,11 @@ stream = ExtResource("27_40n4f")
 
 [node name="PlayerKilledSFX" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("28_vt61t")
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+path_desired_distance = 1.0
+target_desired_distance = 5.0
+debug_enabled = true
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]

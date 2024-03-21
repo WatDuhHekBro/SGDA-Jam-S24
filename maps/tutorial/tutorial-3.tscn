@@ -69,7 +69,6 @@ y_sort_enabled = true
 
 [node name="Enemy" parent="Map/AboveGround/Enemies" instance=ExtResource("5_5lgfy")]
 position = Vector2(-223, -32)
-speed = 130.0
 
 [node name="Layer2" type="TileMap" parent="Map"]
 z_index = 1

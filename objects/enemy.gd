@@ -8,6 +8,7 @@ const DirUtils = preload("res://objects/utils/directions.gd")
 @onready var nav: NavigationAgent2D = $NavigationAgent2D
 @onready var target = $%Player
 @onready var player_spotted_sfx = $PlayerSpottedSFX
+@export var acceleration_versus_velocity: Curve = Curve.new()
 var anim
 var is_seeking = false
 var target_last_seen;
@@ -29,6 +30,12 @@ func decide_villager():
 	anim = $Villagers.get_child(random)
 	$Villagers.get_child(random).visible = true
 
+func _draw():
+	var start = to_global(Vector2.ZERO)
+	var end = to_global(velocity)
+	print("start: ", start, "end: ", end)
+	draw_line(start, end, Color(1, 0, 0), 2)
+
 
 func _physics_process(_delta):
 	await get_tree().physics_frame
@@ -48,7 +55,6 @@ func _physics_process(_delta):
 	if not nav.is_navigation_finished() || not lost_sight:
 		var next = to_local(nav.get_next_path_position()).normalized()
 		var focus_coeff = sin(abs(next.angle_to(velocity)))
-		print(focus_coeff)
 		var turnign_velocity = next * focus_acceleration * focus_coeff
 		var next_velocity = velocity + next * acceleration + turnign_velocity
 		velocity = next_velocity.limit_length(desired_speed)
@@ -56,6 +62,7 @@ func _physics_process(_delta):
 	move_and_slide()
 
 	check_animation()
+	_draw()
 
 func is_line_of_sight() -> bool:
 	var space_state = get_world_2d().direct_space_state

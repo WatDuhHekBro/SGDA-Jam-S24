@@ -25,3 +25,8 @@ navigation_polygon = SubResource("NavigationPolygon_rh7lh")
 [node name="Layer2" parent="." instance=ExtResource("4_vcql0")]
 
 [node name="Layer3" parent="." instance=ExtResource("5_4f35t")]
+
+[node name="Moonlight" type="CanvasModulate" parent="."]
+color = Color(0.137255, 0.14902, 0.27451, 1)
+
+[editable path="AboveGround"]

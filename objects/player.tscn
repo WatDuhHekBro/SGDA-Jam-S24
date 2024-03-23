@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://7qwoc7r1ih8"]
+[gd_scene load_steps=21 format=3 uid="uid://7qwoc7r1ih8"]
 
 [ext_resource type="Script" path="res://objects/player.gd" id="1_5f28u"]
 [ext_resource type="Texture2D" uid="uid://d0jmwswenfkey" path="res://assets/ghost/dust.png" id="2_cv8qm"]
@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://1uwi2unbhjyt" path="res://assets/music/sfx/wallphase2.wav" id="9_nky0e"]
 [ext_resource type="AudioStream" uid="uid://c5o46v0xgntbf" path="res://assets/music/sfx/player_killed.wav" id="10_aqk0e"]
 [ext_resource type="AudioStream" uid="uid://bkphruq7n4x21" path="res://assets/music/sfx/cloud-poof.mp3" id="11_osuos"]
+[ext_resource type="Texture2D" uid="uid://diq45mro8fbuq" path="res://assets/environment/light.png" id="12_ntwm8"]
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_g6krc"]
 particles_animation = true
@@ -152,6 +153,11 @@ draw_order = 1
 texture = ExtResource("5_o5lrb")
 gravity = Vector2(0, 0)
 color_ramp = SubResource("Gradient_do5ys")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+visible = false
+texture = ExtResource("12_ntwm8")
+texture_scale = 0.5
 
 [connection signal="timeout" from="TimerTimejump" to="." method="_on_timer_timejump_timeout"]
 [connection signal="timeout" from="TimerWallphaseTimeout" to="." method="_on_timer_wallphase_timeout_timeout"]

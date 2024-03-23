@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://do63xl4amjqwy"]
+[gd_scene load_steps=47 format=3 uid="uid://do63xl4amjqwy"]
 
 [ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
 [ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_4n3h6"]
@@ -28,6 +28,10 @@
 [ext_resource type="Texture2D" uid="uid://b71xpw3wixx8i" path="res://assets/miscIcons/warning.png" id="26_buoup"]
 [ext_resource type="AudioStream" uid="uid://ck41me18uiwl0" path="res://assets/music/sfx/player_spotted.wav" id="27_40n4f"]
 [ext_resource type="AudioStream" uid="uid://c5o46v0xgntbf" path="res://assets/music/sfx/player_killed.wav" id="28_vt61t"]
+
+[sub_resource type="Curve" id="Curve_h6rpm"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_e4w5n"]
 radius = 7.0
@@ -201,12 +205,34 @@ min_value = 0.99
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989011, -0.758242), 0.0, 0.0, 0, 0]
 point_count = 2
 
+[sub_resource type="Curve" id="Curve_ht7kf"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_j17v3"]
+curve = SubResource("Curve_ht7kf")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_wpro5"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+turbulence_initial_displacement_max = 100.0
+turbulence_influence_over_life = SubResource("CurveTexture_j17v3")
+
+[sub_resource type="Curve" id="Curve_c1bft"]
+_data = [Vector2(0.166667, 0.175824), 0.0, 0.0, 0, 0, Vector2(0.446237, 0.54945), 0.157227, 0.157227, 0, 0, Vector2(0.860215, 0.208791), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_t6hkj"]
+width = 269
+curve = SubResource("Curve_c1bft")
+
 [node name="Enemy" type="CharacterBody2D"]
 collision_layer = 8
 collision_mask = 11
 script = ExtResource("1_hxnli")
 desired_speed = 120.0
 acceleration = 3.0
+acceleration_versus_velocity = SubResource("Curve_h6rpm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_e4w5n")
@@ -215,21 +241,25 @@ shape = SubResource("CircleShape2D_e4w5n")
 position = Vector2(0, -23)
 
 [node name="Villager0" type="AnimatedSprite2D" parent="Villagers"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_4csns")
 animation = &"backward"
 autoplay = "forward"
 
 [node name="Villager1" type="AnimatedSprite2D" parent="Villagers"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_1wg8y")
 animation = &"forward"
 autoplay = "forward"
 
 [node name="Villager2" type="AnimatedSprite2D" parent="Villagers"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_ahhwm")
 animation = &"forward"
 autoplay = "forward"
 
 [node name="Villager3" type="AnimatedSprite2D" parent="Villagers"]
+visible = false
 sprite_frames = SubResource("SpriteFrames_0vwep")
 animation = &"forward"
 autoplay = "forward"
@@ -289,7 +319,12 @@ stream = ExtResource("28_vt61t")
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 path_desired_distance = 1.0
 target_desired_distance = 5.0
-debug_enabled = true
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+visible = false
+position = Vector2(61, -48)
+process_material = SubResource("ParticleProcessMaterial_wpro5")
+texture = SubResource("CurveTexture_t6hkj")
 
 [connection signal="body_entered" from="KillArea" to="." method="_on_kill_player_entered"]
 [connection signal="body_entered" from="DetectionArea" to="." method="_on_player_entered"]

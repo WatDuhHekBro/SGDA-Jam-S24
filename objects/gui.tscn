@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://ilkpfn1d7gqh"]
+[gd_scene load_steps=17 format=3 uid="uid://ilkpfn1d7gqh"]
 
-[ext_resource type="Script" path="res://objects/gui.gd" id="1_oonh8"]
+[ext_resource type="Script" uid="uid://dyoacp5uxmref" path="res://objects/gui.gd" id="1_oonh8"]
 [ext_resource type="Texture2D" uid="uid://2jqginrb46mj" path="res://assets/items/ui/wallrun-off.png" id="2_mn8rw"]
 [ext_resource type="Texture2D" uid="uid://cn376730lukqa" path="res://assets/items/ui/timejump-on.png" id="2_qcqev"]
 [ext_resource type="Texture2D" uid="uid://dbckl7k5s4fyr" path="res://assets/miscIcons/dash.png" id="3_4iagx"]

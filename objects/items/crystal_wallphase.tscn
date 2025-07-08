@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://dus1nai686kk8"]
 
-[ext_resource type="Script" path="res://objects/items/crystal_wallphase.gd" id="1_2726d"]
+[ext_resource type="Script" uid="uid://dr6kw1yu5bnst" path="res://objects/items/crystal_wallphase.gd" id="1_2726d"]
 [ext_resource type="Texture2D" uid="uid://dbckl7k5s4fyr" path="res://assets/miscIcons/dash.png" id="2_555rt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_70b5u"]

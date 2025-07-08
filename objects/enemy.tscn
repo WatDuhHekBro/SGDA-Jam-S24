@@ -1,6 +1,6 @@
 [gd_scene load_steps=47 format=3 uid="uid://do63xl4amjqwy"]
 
-[ext_resource type="Script" path="res://objects/enemy.gd" id="1_hxnli"]
+[ext_resource type="Script" uid="uid://b1nt3jyl40470" path="res://objects/enemy.gd" id="1_hxnli"]
 [ext_resource type="Texture2D" uid="uid://b46jn5353efsc" path="res://assets/enemies/villager/villager01_IdleB01.png" id="2_4n3h6"]
 [ext_resource type="Texture2D" uid="uid://cbteniltx6w0n" path="res://assets/enemies/villager/villager01_IdleB02.png" id="3_ornpd"]
 [ext_resource type="Texture2D" uid="uid://d23h8tlquamwd" path="res://assets/enemies/villager/villager01_IdleF01.png" id="4_ubmky"]
@@ -201,7 +201,7 @@ interpolation_mode = 2
 colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="Curve" id="Curve_qc3ny"]
-min_value = 0.99
+_limits = [0.99, 1.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989011, -0.758242), 0.0, 0.0, 0, 0]
 point_count = 2
 

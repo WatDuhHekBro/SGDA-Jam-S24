@@ -6,8 +6,7 @@
 size = Vector2(24, 27)
 
 [sub_resource type="Curve" id="Curve_nufyk"]
-min_value = -360.0
-max_value = 360.0
+_limits = [-360.0, 360.0, 0.0, 1.0]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.989011, 35.6044), 0.0, 0.0, 0, 0]
 point_count = 2
 

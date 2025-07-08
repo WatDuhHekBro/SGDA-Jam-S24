@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://d4lqvkbpwk1da"]
 
-[ext_resource type="Script" path="res://maps/offgameplay/storytime-end.gd" id="1_v0gox"]
+[ext_resource type="Script" uid="uid://bkwp3qf0u4c3j" path="res://maps/offgameplay/storytime-end.gd" id="1_v0gox"]
 [ext_resource type="Texture2D" uid="uid://ciro7kgq7rpka" path="res://assets/diary/diary15.png" id="16_dafcr"]
 
 [node name="Storytime" type="Node2D"]

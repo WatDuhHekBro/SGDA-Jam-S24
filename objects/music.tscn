@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://fihuwcjgdne4"]
 
-[ext_resource type="Script" path="res://objects/music.gd" id="1_lw8rx"]
+[ext_resource type="Script" uid="uid://de8xqr4ieu1f8" path="res://objects/music.gd" id="1_lw8rx"]
 [ext_resource type="AudioStream" uid="uid://cknf3v1c77khg" path="res://assets/music/jamp1.ogg" id="1_rxlc7"]
 [ext_resource type="AudioStream" uid="uid://dk37x41qfx741" path="res://assets/music/jam_intro_2.wav" id="2_mbitp"]
 

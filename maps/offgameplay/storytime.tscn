@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://dfyrp54ftmerh"]
 
-[ext_resource type="Script" path="res://maps/offgameplay/storytime.gd" id="1_kwwna"]
+[ext_resource type="Script" uid="uid://bva72mcy6gwbk" path="res://maps/offgameplay/storytime.gd" id="1_kwwna"]
 [ext_resource type="Texture2D" uid="uid://di4xam6ihbybh" path="res://assets/diary/diary01.png" id="1_obwkr"]
 [ext_resource type="Texture2D" uid="uid://cqplco363uh60" path="res://assets/diary/diary08.png" id="2_omcux"]
 [ext_resource type="Texture2D" uid="uid://ciro7kgq7rpka" path="res://assets/diary/diary15.png" id="3_1gqiv"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=15 format=3 uid="uid://dktdmmne5mr4m"]
 
-[ext_resource type="Script" path="res://maps/offgameplay/menu.gd" id="1_8vl3h"]
+[ext_resource type="Script" uid="uid://du0yj4epfiv5h" path="res://maps/offgameplay/menu.gd" id="1_8vl3h"]
 [ext_resource type="Texture2D" uid="uid://bdrlpin3jwvd" path="res://assets/screens/titlescreen/titlescreenA01.png" id="1_g4i1i"]
 [ext_resource type="Texture2D" uid="uid://beanmikalv7f5" path="res://assets/screens/creditsScreen.png" id="2_132f1"]
 [ext_resource type="Texture2D" uid="uid://cq4cdlsn1a3wp" path="res://assets/screens/titlescreen/titlescreenA02.png" id="2_ecsba"]
